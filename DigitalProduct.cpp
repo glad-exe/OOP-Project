@@ -5,35 +5,36 @@
 #include "DigitalProduct.h"
 using namespace std;
 
-    //copies text into new memory
-    char* DigitalProduct::copyText(const char* source){
+    //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
+    //see also: store.cpp, supplier.cpp, label.cpp, digitalproduct.cpp
+    char* Product::copyString(const char* original){
+        if(!original) original = "";
         int len = 0;
-        while(source[len] != '\0') len++;
+        while(original[len] != '\0') len++;
 
         char* temp = new char[len + 1];
-        for(int i = 0; i < len; i++){
-            temp[i] = source[i];
-        }
-        temp[len] = '\0';
+        for(int i = 0; i < len; i++) temp[i] = original[i];
 
+        temp[len] = '\0';
         return temp;
     }
 
-    DigitalProduct::DigitalProduct(double dSize, const char* lKey, int bCode, const char* pName,
-        double pPrice, int pStock, const char* pDescription)
+    //Default parametrized constructor
+    DigitalProduct::DigitalProduct(double dSize = 0.0, const char* lKey = "", int bCode = 0, const char* pName = "",
+        double pPrice = 0.0, int pStock = 0, const char* pDescription = "")
         : Product(bCode, pName, pPrice, pStock, pDescription) {
 
             downloadSize = dSize;
-            licenceKey = copyText(lKey);
+            licenceKey = copyString(lKey);
             cout << "DigitalProduct " << pName << " created." << endl;
     }
 
-    //makes an independent copy
+    //Copy constructor
     DigitalProduct::DigitalProduct(const DigitalProduct& og)
         : Product(og) {
 
             downloadSize = og.downloadSize;
-            licenceKey = copyText(og.licenceKey);
+            licenceKey = copyString(og.licenceKey);
             cout << "DigitalProduct copied." << endl;
     }
 

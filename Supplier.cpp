@@ -2,7 +2,8 @@
 // Student ID: 20251030 20250141 20250032 20230270
 
 #include "Supplier.h"
-
+    //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
+    //see also: store.cpp, digitalproduct.cpp, label.cpp
     char* Supplier::copyString(const char* original){
         if(!original) original = "";
         int len = 0;

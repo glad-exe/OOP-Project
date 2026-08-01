@@ -5,6 +5,8 @@
 #include <iostream>
 using namespace std;
 
+//Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
+//see also: supplier.cpp, digitalproduct.cpp, label.cpp
 char* Store::copyString(const char* original){
     if(!original) original = "";
     int len = 0;

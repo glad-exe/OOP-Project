@@ -29,6 +29,7 @@ public:
 
     // MEMBER FUNCTIONS
     void printLabel() const;
+    char* Label::copyString(const char* original);
 };
 
 #endif

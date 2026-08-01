@@ -11,7 +11,7 @@ class DigitalProduct : public Product
 private:
     double downloadSize;
     char* licenceKey;
-    char* copyText(const char* source);
+    char* copyString(const char* source);
 
 public:
     DigitalProduct(double dSize = 0.0, const char* lKey = "", int bCode = 0, const char* pName = "",

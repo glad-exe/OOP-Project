@@ -6,21 +6,17 @@
 
 using namespace std;
 
-// Friend function definition
-char* copyString(const char* source) {
-    if (!source) source = "";
-
+//Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
+//see also: store.cpp, supplier.cpp, digitalproduct.cpp
+char* Label::copyString(const char* original){
+    if(!original) original = "";
     int len = 0;
-    while (source[len] != '\0') {
-        len++;
-    }
+    while(original[len] != '\0') len++;
 
     char* temp = new char[len + 1];
-    for (int i = 0; i < len; i++) {
-        temp[i] = source[i];
-    }
-    temp[len] = '\0';
+    for(int i = 0; i < len; i++) temp[i] = original[i];
 
+    temp[len] = '\0';
     return temp;
 }
 

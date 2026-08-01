@@ -6,10 +6,13 @@
 using namespace std;
     int Product::productCount = 0;
 
+    //THE helper function.
+    //copies text into new memory
+    //Used in Product, DigitalProduct, Supplier, Store, Label classes.
     char* Product::copyString(const char* original){
-        if(!original) original ="";
+        if(!original) original = "";
         int len = 0;
-        while(original[len]!='\0') len++;
+        while(original[len] != '\0') len++;
 
         char* temp = new char[len + 1];
         for(int i = 0; i < len; i++) temp[i] = original[i];
