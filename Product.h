@@ -25,18 +25,29 @@ class Product{
     virtual ~Product();
 
     //SETTERS
-    Product& setPrice(int tempPrice);
-    Product& setStock(int tempStock);
-    Product& setName(const char* newName) {
+    Product& setPrice  (int tempPrice);
+    Product& setStock  (int tempStock);
+    Product& setName   (const char* newName) {
         delete[] productName;
         productName = copyString(newName);
         return *this; 
     }
+    Product& setDescription(const char* newDescription) {
+        delete[] description;
+        description = copyString(newDescription);
+        return *this; 
+    }
+    //GETTERS
+    int         getBarcode()     const;
+    const char* getProductName() const;
+    double      getPrice()       const;
+    int         getStock()       const;
+    const char* getDescription() const;
 
     //member functions
-    void addStock(int tempStock = 1);
-    bool isSameItem(const Product& other) const;
+    void   addStock(int tempStock = 1);
+    bool   isSameItem(const Product& other) const;
     double totalStockValue() const;
-    void displayInfo() const;
+    void   displayInfo() const;
 
 };

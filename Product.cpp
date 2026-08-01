@@ -70,6 +70,20 @@ using namespace std;
         return *this; 
     }
 
+
+    Product& Product::setDescription(const char* newDescription) {
+        delete[] description;
+        description = copyString(newDescription);
+        return *this;
+    }
+
+    //GETTERS
+    int         Product::getBarcode()     const { return barcode; }
+    const char* Product::getProductName() const { return productName; }
+    double      Product::getPrice()       const { return price; }
+    int         Product::getStock()       const { return inStock; }
+    const char* Product::getDescription() const { return description; }
+
     //MEMBER FUNCTIONS
 
     //add stock
