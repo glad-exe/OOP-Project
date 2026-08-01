@@ -106,3 +106,5 @@ using namespace std;
         cout << "In Stock: " << inStock << endl;
         cout << "Description: " << description << endl;
     }
+    //get product count
+    int Product::getProductCount() const { return productCount; }
