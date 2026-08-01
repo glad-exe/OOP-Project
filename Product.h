@@ -4,7 +4,7 @@
 #include<iostream>
 using namespace std;
 class Product{
-    private:
+    protected:
         const int barcode;
         char* productName;
         double price;
