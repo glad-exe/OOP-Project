@@ -18,7 +18,6 @@ using namespace std;
     }
 
     //CONSTRUCTORS
-
     //Default constructor
     Label::Label(){
         copyText("Untitled Label");

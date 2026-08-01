@@ -8,24 +8,22 @@ class Label{
     private:
         char labelText[100];
         void copyText(const char* source);
-
     public:
-    //CONSTRUCTORS
-    //Default constructor
-    Label();
-    //Constructor with text
-    Label(const char* text);
+        //CONSTRUCTORS
+        //Default constructor
+        Label();
+        //Constructor with text
+        Label(const char* text);
 
-    //DESTRUCTOR
-    ~Label();
+        //DESTRUCTOR
+        ~Label();
 
-    //SETTERS AND GETTERS
-    void setText(const char* text);
-    const char* getText() const;
+        //SETTERS AND GETTERS
+        void setText(const char* text);
+        const char* getText() const;
 
-    //member functions
-    void printLabel() const;
-
+        //member functions
+        void printLabel() const;
 };
 
 #endif

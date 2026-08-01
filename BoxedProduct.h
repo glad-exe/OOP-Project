@@ -8,12 +8,15 @@ class BoxedProduct : public Product {
         double weight;
         ShelfLocation location;
     public:
+        //CONSTRUCTORS
+        //Default parametrized constructor
         BoxedProduct(double weight = 0.0, int bCode = 0, const char* pName = "",
             double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
-
+        //Copy constructor
+        BoxedProduct(const BoxedProduct& other);
         ~BoxedProduct();
 
         double deliveryCharge() const;
-        void displayInfo();
+        void displayInfo() const;
 };    
 
