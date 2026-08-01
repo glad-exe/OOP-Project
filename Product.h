@@ -18,7 +18,7 @@ class Product{
 
     //CONSTRUCTORS
     //Default constructor
-    Product(int bCode, const char* pName, double pPrice, int pStock, const char* pDescription);
+    Product(int bCode = 0, const char* pName = "", double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
     //Copy Constructor
     Product(const Product& og);
 

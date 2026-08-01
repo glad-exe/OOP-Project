@@ -12,9 +12,10 @@ public:
     BoxedProduct(double weight = 0.0, int bCode = 0, const char* pName = "",
         double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
 
-    ~BoxedProduct(){
-        
-    }
+    ~BoxedProduct();
+
+    double deliveryCharge() const;
+    displayInfo();
 
 };    
 
