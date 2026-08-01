@@ -7,7 +7,7 @@
     //Default parametrized constructor
     BoxedProduct::BoxedProduct(double pWeight, int bCode, const char* pName, 
     double pPrice, int pStock, const char* pDescription)
-    : Product(bCode, pName, pPrice, pStock, pDescription), weight(pWeight), location() {
+        :Product(bCode, pName, pPrice, pStock, pDescription), weight(pWeight), location() {
         cout << "BoxedProduct " << pName << " created." << endl;
     }
 

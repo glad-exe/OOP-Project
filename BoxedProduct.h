@@ -1,5 +1,7 @@
 // Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
 // Student ID: 20251030 20250141 20250032 20230270
+#ifndef BOXEDPRODUCT_H
+#define BOXEDPRODUCT_H
 
 #include "Product.h"
 #include "ShelfLocation.h"
@@ -18,5 +20,6 @@ class BoxedProduct : public Product {
 
         double deliveryCharge() const;
         void displayInfo() const;
-};    
-
+};
+ 
+#endif
