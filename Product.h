@@ -11,19 +11,18 @@ class Product{
         int inStock;
         char* description;
         static int productCount;
-        char* copyString(const char* original);
-
-    public:
+        
+        public:
         
         //CONSTRUCTORS
         //Default constructor
         Product(int bCode = 0, const char* pName = "", double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
         //Copy Constructor
         Product(const Product& og);
-
+        
         //DESTRUCTOR
         virtual ~Product();
-
+        
         //SETTERS
         Product& setPrice  (int tempPrice);
         Product& setStock  (int tempStock);
@@ -43,12 +42,13 @@ class Product{
         double      getPrice()       const;
         int         getStock()       const;
         const char* getDescription() const;
-
+        
         //member functions
+        char*  copyString(const char* original);
         void   addStock(int tempStock = 1);
         bool   isSameItem(const Product& other) const;
         double totalStockValue()                const;
         void   displayInfo()                    const;
         int    getProductCount()                const;
-
+        friend class Label;
 };
