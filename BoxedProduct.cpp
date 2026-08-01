@@ -17,7 +17,7 @@
 
     //destructor
     BoxedProduct::~BoxedProduct() {
-        cout << "BoxedProduct destroyed." << endl;
+        cout << "BoxedProduct " << productName << " destroyed." << endl;
     }
 
     //member functions
