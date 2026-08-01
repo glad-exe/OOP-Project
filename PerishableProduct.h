@@ -1,4 +1,8 @@
 #include "Product.h"
+
+#ifndef PERISHABLEPRODUCT_H
+#define PERISHABLEPRODUCT_H
+
 class PerishableProduct : public Product{
     private:
         double storageTemperature;
@@ -15,8 +19,10 @@ class PerishableProduct : public Product{
         //Destructor
         ~PerishableProduct();
 
-        //member functions
+        //MEMBER FUNCTIONS
         bool   hasExpired()    const;
         double deliveryCharge() const;
         void   displayInfo()    const;
 };
+
+#endif
