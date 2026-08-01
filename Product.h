@@ -1,3 +1,6 @@
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Student ID: 20251030 20250141 20250032 20230270
+
 #include<iostream>
 using namespace std;
 #include <cstring>
@@ -12,12 +15,13 @@ class Product{
         char* copyString(const char* original);
 
     public:
+
     //CONSTRUCTORS
     //Default constructor
     Product(int bCode, const char* pName, double pPrice, int pStock, const char* pDescription);
     //Copy Constructor
     Product(const Product& og);
-    
+
     //DESTRUCTOR
     virtual ~Product();
 

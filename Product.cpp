@@ -1,7 +1,9 @@
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Student ID: 20251030 20250141 20250032 20230270
+
 #include<iostream>
 #include "Product.h"
 using namespace std;
-
     int Product::productCount = 0;
 
     char* Product::copyString(const char* original){
@@ -17,7 +19,7 @@ using namespace std;
     }
 
     //CONSTRUCTORS
-    
+
     //Default constructor
     Product::Product(int bCode, const char* pName, double pPrice, int pStock, const char* pDescription)
     :barcode(bCode), price(pPrice), inStock(pStock){
