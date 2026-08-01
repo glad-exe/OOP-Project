@@ -1,9 +1,12 @@
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Student ID: 20251030 20250141 20250032 20230270
+
 #include "Supplier.h"
 
     char* Supplier::copyString(const char* original){
-        if(!original) original ="";
+        if(!original) original = "";
         int len = 0;
-        while(original[len]!='\0') len++;
+        while(original[len] != '\0') len++;
 
         char* temp = new char[len + 1];
         for(int i = 0; i < len; i++) temp[i] = original[i];
@@ -31,42 +34,33 @@
         delete[] supplierCodes;
     }
 
-    // Setters
+    //SETTERS
     Supplier& Supplier::setSupplierName    (const char* name) {
-
-
+        supplierName = copyString(name);
+        return *this;
     }
-
     Supplier& Supplier::setSupplierPhone   (const char* phone) {
-
+        supplierPhone = copyString(phone);
+        return *this;
     }
-
     Supplier& Supplier::setSupplierAddress (const char* address) {
-
+        supplierAddress = copyString(address);
+        return *this;
     }
-
     Supplier& Supplier::setSupplierCodes   (int* codes) {
-
+        supplierCodes = codes;
+        return *this;
     }
 
-    // Getters
-    const char* Supplier::getSupplierName  ()  const {
-
-    }
-    const char* Supplier::getSupplierPhone  () const {
-
-    }
-
-    const char* Supplier::getSupplierAddress() const {
-
-    }
-
-    int*        Supplier::getSupplierCodes  () const {
-
-    }
+    //GETTERS
+    const char* Supplier::getSupplierName   () const { return supplierName; }
+    const char* Supplier::getSupplierPhone  () const { return supplierPhone; }
+    const char* Supplier::getSupplierAddress() const { return supplierAddress; }
+    int*        Supplier::getSupplierCodes  () const { return supplierCodes; }
 
     void Supplier::addSuppliedProduct(int _barcode) {
 
+        
     }
 
     void Supplier::displayInfo() const {
