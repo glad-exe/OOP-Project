@@ -3,7 +3,6 @@
 
 #include<iostream>
 using namespace std;
-#include <cstring>
 class Product{
     private:
         const int barcode;
