@@ -14,40 +14,41 @@ class Product{
         char* copyString(const char* original);
 
     public:
+        
+        //CONSTRUCTORS
+        //Default constructor
+        Product(int bCode = 0, const char* pName = "", double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
+        //Copy Constructor
+        Product(const Product& og);
 
-    //CONSTRUCTORS
-    //Default constructor
-    Product(int bCode = 0, const char* pName = "", double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
-    //Copy Constructor
-    Product(const Product& og);
+        //DESTRUCTOR
+        virtual ~Product();
 
-    //DESTRUCTOR
-    virtual ~Product();
+        //SETTERS
+        Product& setPrice  (int tempPrice);
+        Product& setStock  (int tempStock);
+        Product& setName   (const char* newName) {
+            delete[] productName;
+            productName = copyString(newName);
+            return *this; 
+        }
+        Product& setDescription(const char* newDescription) {
+            delete[] description;
+            description = copyString(newDescription);
+            return *this; 
+        }
+        //GETTERS
+        int         getBarcode()     const;
+        const char* getProductName() const;
+        double      getPrice()       const;
+        int         getStock()       const;
+        const char* getDescription() const;
 
-    //SETTERS
-    Product& setPrice  (int tempPrice);
-    Product& setStock  (int tempStock);
-    Product& setName   (const char* newName) {
-        delete[] productName;
-        productName = copyString(newName);
-        return *this; 
-    }
-    Product& setDescription(const char* newDescription) {
-        delete[] description;
-        description = copyString(newDescription);
-        return *this; 
-    }
-    //GETTERS
-    int         getBarcode()     const;
-    const char* getProductName() const;
-    double      getPrice()       const;
-    int         getStock()       const;
-    const char* getDescription() const;
-
-    //member functions
-    void   addStock(int tempStock = 1);
-    bool   isSameItem(const Product& other) const;
-    double totalStockValue() const;
-    void   displayInfo() const;
+        //member functions
+        void   addStock(int tempStock = 1);
+        bool   isSameItem(const Product& other) const;
+        double totalStockValue()                const;
+        void   displayInfo()                    const;
+        int    getProductCount()                const;
 
 };
