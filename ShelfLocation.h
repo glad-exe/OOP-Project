@@ -9,5 +9,5 @@ class ShelfLocation {
         ShelfLocation();
         char getAisle();
         int getSlot();
-        void displayLocation();
+        void displayLocation() const;
 };

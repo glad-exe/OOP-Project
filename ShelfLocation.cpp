@@ -8,6 +8,6 @@ ShelfLocation::ShelfLocation() = default;
 char ShelfLocation::getAisle() {return aisle;}
 int ShelfLocation::getSlot() {return slot;}
 
-void ShelfLocation::displayLocation() {
+void ShelfLocation::displayLocation() const {
     std::cout << "Aisle: " << aisle << ", Slot: " << slot << std::endl;
 }
