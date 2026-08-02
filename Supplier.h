@@ -9,8 +9,7 @@ class Supplier {
         char*  supplierName;    //Supplier name, stored as a dynamically allocated C-style string.
         char*  supplierPhone;   //Phone number of the supplier, stored as a dynamically allocated C-style string.
         char*  supplierAddress; //Supplier address, stored as a dynamically allocated C-style string.
-        int*   supplierCodes;   //Int list of every barcode this supplier uses.
-        int    codeCount;       //how many barcodes are currently in supplierCodes
+        int*   supplierCodes;   //Int list of every barcode this supplier uses, ends with a -1.
     public:
         Supplier(const char* name = "", const char* phone = "", const char* address = "", int* codes = nullptr);
         Supplier(const Supplier& other);
@@ -30,6 +29,9 @@ class Supplier {
 
         //Utility function to copy a string, originally in Product class.
         char* copyString(const char* original);
+
+        //copies the barcode list, counts up to the -1 at the end
+        int* copyIntArr(const int* original);
 
         //Function to add a supplied product's barcode to the supplier's list of codes.
         void  addSuppliedProduct(int _barcode);
