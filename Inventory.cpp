@@ -88,12 +88,24 @@ using namespace std;
 
     //finds product by barcode
     Product* Inventory::findByBarcode(int barcode) const{
-        //idk how to do this one
+        for(int i = 0; i < shelfCount; i++){
+            if(shelf[i]->getBarcode() == barcode) return shelf[i];
+        }
+        for(int i = 0; i < warehouseCount; i++){
+            if(warehouse[i]->getBarcode() == barcode) return warehouse[i];
+        }
+        return 0;
     }
 
     //finds product by its name
     Product* Inventory::findByName(const char* name) const{
-        //idk how to do this one either
+        for(int i = 0; i < shelfCount; i++){
+            if(sameText(shelf[i]->getProductName(), name)) return shelf[i];
+        }
+        for(int i = 0; i < warehouseCount; i++){
+            if(sameText(warehouse[i]->getProductName(), name)) return warehouse[i];
+        }
+        return 0;
     }
 
     //prints everything thats on the shelf rn
