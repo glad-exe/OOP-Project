@@ -28,9 +28,9 @@ Store::Store(const char* sName, const char* sAddress, int warehouseSize)
 
 //destructor
 Store::~Store(){
+    cout << "Store " << storeName << " destroyed." << endl;
     delete[] storeName;
     delete[] address;
-    cout << "Store " << storeName << " destroyed." << endl;
 }
 
 
