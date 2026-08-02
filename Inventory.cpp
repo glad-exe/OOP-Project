@@ -100,12 +100,25 @@ using namespace std;
     void Inventory::listShelf() const{
         for(int i = 0; i < shelfCount; i++){
             shelf[i]->displayInfo();
-            cout << "    " << endl;
+            cout << "-----" << endl;
         }
     }
 
     //adds up value of stock that didnt expire yet
     double Inventory::sellableStockValue() const{
+        double total = 0.0;
+
+        for(int i = 0; i < shelfCount; i++){
+            PerishableProduct* per = dynamic_cast<PerishableProduct*>(shelf[i]);
+            if(per != 0 && per->hasExpired()) continue;
+            total += shelf[i]->totalStockValue();
+        }
+
+        for(int i = 0; i < warehouseCount; i++){
+            PerishableProduct* per = dynamic_cast<PerishableProduct*>(warehouse[i]);
+            if(per != 0 && per->hasExpired()) continue;
+            total += warehouse[i]->totalStockValue();
+        }
 
         return total;
     }
