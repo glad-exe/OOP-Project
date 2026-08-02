@@ -18,7 +18,9 @@ Order::Order(const Order& other) : orderNumber(other.orderNumber){
 }
 
 Order::~Order() {
-
+    delete[] customerName;
+    delete[] items;
+    cout << "Order " << orderNumber << "destroyed.";
 }
 
 void   Order::addItem(Product p, int quantity) {

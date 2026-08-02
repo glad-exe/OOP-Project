@@ -21,7 +21,7 @@ using namespace std;
         return temp;
     }
 
-    Supplier::Supplier(const char* name = "", const char* phone = "", const char* address = "", int* codes = nullptr) {
+    Supplier::Supplier(const char* name, const char* phone, const char* address, int* codes) {
         supplierName = copyString(name);
         supplierPhone = copyString(phone);
         supplierAddress = copyString(address);
@@ -49,18 +49,22 @@ using namespace std;
 
     //SETTERS
     Supplier& Supplier::setSupplierName    (const char* name) {
+        delete[] supplierName;
         supplierName = copyString(name);
         return *this;
     }
     Supplier& Supplier::setSupplierPhone   (const char* phone) {
+        delete[] supplierPhone;
         supplierPhone = copyString(phone);
         return *this;
     }
     Supplier& Supplier::setSupplierAddress (const char* address) {
+        delete[] supplierAddress;
         supplierAddress = copyString(address);
         return *this;
     }
     Supplier& Supplier::setSupplierCodes   (int* codes) {
+        delete[] supplierCodes;
         supplierCodes = codes;
         return *this;
     }

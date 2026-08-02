@@ -47,7 +47,5 @@ class Product{
         double totalStockValue()                const;
         void   displayInfo()                    const;
         int    getProductCount()                const;
-
-        friend class Label;
 };
 #endif
