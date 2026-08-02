@@ -51,20 +51,23 @@ using namespace std;
     //SETTERS
 
     //price
-    Product& Product::setPrice(int tempPrice){
+    Product& Product::setPrice(double tempPrice){
         if(tempPrice >= 0) price=tempPrice;
         else cout << "Negative price not allowed." << endl ;
         return *this;
     }
-
+    
     //stock
     Product& Product::setStock(int tempStock){
         if(tempStock>=0) inStock=tempStock;
-
+        
         else cout << "Negative stock not allowed." << endl;
         return *this;
     }
-
+    
+    //from this point on, 
+    //the setters all use the same pattern of using the copyString helper function
+    //to handle dynamic memory allocation and deallocation for string attributes.
     //name
     Product& Product::setName(const char* newName) {
         delete[] productName;
@@ -73,19 +76,21 @@ using namespace std;
         return *this; 
     }
 
-
+    //description
     Product& Product::setDescription(const char* newDescription) {
         delete[] description;
         description = copyString(newDescription);
+        
         return *this;
     }
 
     //GETTERS
-    int         Product::getBarcode()     const { return barcode; }
-    const char* Product::getProductName() const { return productName; }
-    double      Product::getPrice()       const { return price; }
-    int         Product::getStock()       const { return inStock; }
-    const char* Product::getDescription() const { return description; }
+    int         Product::getBarcode()      const { return barcode; }
+    const char* Product::getProductName()  const { return productName; }
+    double      Product::getPrice()        const { return price; }
+    int         Product::getStock()        const { return inStock; }
+    const char* Product::getDescription()  const { return description; }
+    int         Product::getProductCount() const { return productCount; }
 
     //MEMBER FUNCTIONS
 
@@ -103,11 +108,9 @@ using namespace std;
 
     //display info
     void Product::displayInfo() const {
-        cout << "Barcode: " << barcode << endl;
+        cout << "Barcode:      " << barcode     << endl;
         cout << "Product Name: " << productName << endl;
-        cout << "Price: " << price << endl;
-        cout << "In Stock: " << inStock << endl;
-        cout << "Description: " << description << endl;
+        cout << "Price:        " << price       << endl;
+        cout << "In Stock:     " << inStock     << endl;
+        cout << "Description:  " << description << endl;
     }
-    //get product count
-    int Product::getProductCount() const { return productCount; }

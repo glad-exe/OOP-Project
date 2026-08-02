@@ -1,4 +1,4 @@
-// Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohammad Araby Al-kabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
 // Student ID: 20251030 20250141 20250032 20230270
 #include "Product.h"
 #ifndef LABEL_H
@@ -8,19 +8,22 @@ char* copyString(const char* source);
 
 class Label {
 private:
-    char* labelText;
-    friend char* copyString(const char* source);
+    char*        labelText; // Text of the label, stored as a dynamically allocated C-style string.
+    friend char* copyString(const char* source); // THE function. Used in Product, DigitalProduct, Supplier, Store, Label classes.
 
 public:
     // CONSTRUCTORS
-    Label();                          
-    Label(const char* text);          
+    // Default constructor
+    Label();              
+    // Parameterized constructor            
+    Label(const char* text);    
+    // Copy constructor (Deep Copy)      
     Label(const Label& other);        
 
     // ASSIGNMENT OPERATOR
     Label& operator=(const Label& other);
 
-    // DESTRUCTOR
+    // Destructor
     ~Label();
 
     // SETTERS AND GETTERS

@@ -4,13 +4,16 @@
 #include<iostream>
 using namespace std;
 class Product{
+    // protected so that we can use it in ther classes.
+    // inheritance is used in DigitalProduct, BoxedProduct, PerishableProduct classes.
     protected:
-        const int barcode;
-        char* productName;
-        double price;
-        int inStock;
-        char* description;
-        static int productCount;
+
+        const int  barcode;      // Unique identifier for the product, assigned at the time of product creation and cannot be changed later.
+        char*      productName;  // Name of the product, stored as a dynamically allocated C-style string.
+        double     price;        // Price of the product in the store's currency.
+        int        inStock;      // Quantity of the product currently available in stock.
+        char*      description;  // Description of the product, stored as a dynamically allocated C-style string.
+        static int productCount; // Static member variable to keep track of the total number of Product instances created. It is shared among all instances of the Product class.
         
         public:
         
@@ -24,8 +27,9 @@ class Product{
         virtual ~Product();
         
         //SETTERS
-        Product& setPrice  (int tempPrice);
-        Product& setStock  (int tempStock);
+        Product& setPrice  (double      tempPrice);
+        Product& setStock  (int         tempStock);
+
         Product& setName   (const char* newName) {
             delete[] productName;
             productName = copyString(newName);

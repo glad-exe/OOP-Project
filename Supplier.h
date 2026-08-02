@@ -1,4 +1,4 @@
-// Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohammad Araby Al-kabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
 // Student ID: 20251030 20250141 20250032 20230270
 
 #ifndef SUPPLIER_H
@@ -6,10 +6,10 @@
 
 class Supplier {
     private:
-        char*  supplierName;
-        char*  supplierPhone;
-        char*  supplierAddress;
-        int*   supplierCodes;
+        char*  supplierName;    //Supplier name, stored as a dynamically allocated C-style string.
+        char*  supplierPhone;   //Phone number of the supplier, stored as a dynamically allocated C-style string.
+        char*  supplierAddress; //Supplier address, stored as a dynamically allocated C-style string.
+        int*   supplierCodes;   //Int list of every barcode this supplier uses.
     public:
         Supplier(const char* name = "", const char* phone = "", const char* address = "", int* codes = nullptr);
         Supplier(const Supplier& other);

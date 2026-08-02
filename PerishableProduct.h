@@ -1,3 +1,5 @@
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohammad Araby Al-kabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Student ID: 20251030 20250141 20250032 20230270
 #include "Product.h"
 
 #ifndef PERISHABLEPRODUCT_H
@@ -5,8 +7,8 @@
 
 class PerishableProduct : public Product{
     private:
-        double storageTemperature;
-        int    daysUntilExpiration;
+        double storageTemperature;   // Storage temperature of the perishable product in degrees Celsius.
+        int    daysUntilExpiration;  // Number of days until the perishable product expires.
     public:
         //Constructors
         //Default parametrized constructor
@@ -20,9 +22,9 @@ class PerishableProduct : public Product{
         ~PerishableProduct();
 
         //MEMBER FUNCTIONS
-        bool   hasExpired()    const;
-        double deliveryCharge() const;
-        void   displayInfo()    const;
+        bool    hasExpired()      const;
+        double  deliveryCharge()  const;
+        void    displayInfo()     const;
 };
 
 #endif

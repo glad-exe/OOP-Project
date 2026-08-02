@@ -9,10 +9,10 @@
 
 class Store {
     private:
-        char* storeName;
-        char* address;
-        Inventory inventory;
-        Supplier supplier;
+        char*     storeName;     // Name of the store, stored as a dynamically allocated C-style string.
+        char*     address;       // Address of the store, stored as a dynamically allocated C-style string.
+        Inventory inventory;     // Inventory object. read documentation in inventory.h for more information. 
+        Supplier  supplier;      // Supplier object
         char* copyString(const char* source);
 
     public:
