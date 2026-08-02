@@ -3,6 +3,8 @@
 
 #include "BoxedProduct.h"
 #include "ShelfLocation.h"
+#include <iostream>
+
     //CONSTRUCTORS
     //Default parametrized constructor
     // Initializes weight to 0.0 and calls the base Product constructor with default values.

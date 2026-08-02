@@ -1,6 +1,7 @@
 // Group Names: 1. Ahmad Enad Dweikat 2. Mohamed Arabi Alkabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
 // Student ID: 20251030 20250141 20250032 20230270
-
+#ifndef PRODUCT_H
+#define PRODUCT_H
 #include<iostream>
 using namespace std;
 class Product{
@@ -56,3 +57,4 @@ class Product{
         int    getProductCount()                const;
         friend class Label;
 };
+#endif

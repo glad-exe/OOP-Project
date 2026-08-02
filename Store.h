@@ -28,4 +28,4 @@ class Store {
         Supplier&   getSupplier();
     };
 
-    #endif
+#endif
