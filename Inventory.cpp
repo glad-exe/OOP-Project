@@ -63,6 +63,27 @@ using namespace std;
 
     //removes product by its barcode
     void Inventory::removeByBarcode(int barcode){
+        for(int i = 0; i < shelfCount; i++){
+            if(shelf[i]->getBarcode() == barcode){
+                delete shelf[i];
+                for(int j = i; j < shelfCount - 1; j++) shelf[j] = shelf[j + 1];
+                shelfCount--;
+                shelf[shelfCount] = 0;
+                return;
+            }
+        }
+
+        for(int i = 0; i < warehouseCount; i++){
+            if(warehouse[i]->getBarcode() == barcode){
+                delete warehouse[i];
+                for(int j = i; j < warehouseCount - 1; j++) warehouse[j] = warehouse[j + 1];
+                warehouseCount--;
+                warehouse[warehouseCount] = 0;
+                return;
+            }
+        }
+
+        cout << "barcode not found, sorry." << endl;
     }
 
     //finds product by barcode
@@ -77,6 +98,10 @@ using namespace std;
 
     //prints everything thats on the shelf rn
     void Inventory::listShelf() const{
+        for(int i = 0; i < shelfCount; i++){
+            shelf[i]->displayInfo();
+            cout << "    " << endl;
+        }
     }
 
     //adds up value of stock that didnt expire yet
