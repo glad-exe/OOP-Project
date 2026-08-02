@@ -26,8 +26,8 @@ using namespace std;
     //Default parametrized constructor
     // Initializes downloadSize to 0.0 and licenceKey to an empty string.
     // Calls the base Product constructor with default values.
-    DigitalProduct::DigitalProduct(double dSize = 0.0, const char* lKey = "", int bCode = 0, const char* pName = "",
-        double pPrice = 0.0, int pStock = 0, const char* pDescription = "")
+    DigitalProduct::DigitalProduct(double dSize, const char* lKey, int bCode, const char* pName,
+        double pPrice, int pStock, const char* pDescription)
         : Product(bCode, pName, pPrice, pStock, pDescription) {
 
             downloadSize = dSize;

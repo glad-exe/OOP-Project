@@ -9,7 +9,7 @@ class ShelfLocation {
         int  slot;
     public:
         ShelfLocation();
-        char getAisle(); //ASK ABOUT THIS
+        char getAisle();
         int getSlot();
         void displayLocation() const;
 };

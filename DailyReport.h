@@ -6,7 +6,7 @@ class Order;
 
 class DailyReport{
     public:
-
+        // THERE IS NO WAAAAAAY THIS IS DONE WHAAAAAAAAAAAAAT
         //CONSTRUCTORS
         //Default constructor
         DailyReport();

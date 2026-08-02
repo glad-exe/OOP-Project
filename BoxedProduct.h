@@ -11,6 +11,7 @@ class BoxedProduct : public Product {
         ShelfLocation location; // Shelf location of the boxed product in storage. Location has aisle and slot. Aisle is a char, slot is an int.
     public:
         //CONSTRUCTORS
+        
         //Default parametrized constructor
         BoxedProduct(double weight = 0.0, int bCode = 0, const char* pName = "",
             double pPrice = 0.0, int pStock = 0, const char* pDescription = "");

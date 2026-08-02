@@ -8,10 +8,9 @@
 class Inventory{
     private:
         Product*  shelf[50];      // shelf is always 50, never changes
-        int       shelfCount;     // how many are used rn
-
+        int       shelfCount;     // how many are used at the moment
         Product** warehouse;      // size given when program starts
-        int       warehouseSize;  // max size of warehosue
+        int       warehouseSize;  // max size of warehouse
         int       warehouseCount; // how many are used
 
         bool sameText(const char* a, const char* b) const; //checks if 2 strings are equal

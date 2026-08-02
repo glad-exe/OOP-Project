@@ -5,15 +5,19 @@
 #include "DailyReport.h"
 #include "Inventory.h"
 #include "Order.h"
+
 using namespace std;
+
+    //CONSTRUCTORS
+
     //Default constructor
     DailyReport::DailyReport(){
-        cout << "DailyReport created." << endl;
+        cout << "Daily Report created." << endl;
     }
 
     //DESTRUCTOR
     DailyReport::~DailyReport(){
-        cout << "DailyReport destroyed." << endl;
+        cout << "Daily Report destroyed." << endl;
     }
 
     //member functions
@@ -21,11 +25,11 @@ using namespace std;
     //goes through every order and checks if the items still match the inventory
     void DailyReport::generate(Inventory& inv, Order orders[], int orderCount){
 
-        cout << "eND OF DAY REPORT" << endl;
+        cout << "END OF DAY REPORT" << endl;
 
         for(int i = 0; i < orderCount; i++){
 
-            cout << "Order nimber" << orders[i].orderNumber << " - " << orders[i].customerName << endl;
+            cout << "Order number" << orders[i].orderNumber << " - " << orders[i].customerName << endl;
 
             for(int j = 0; j < orders[i].itemCount; j++){
 

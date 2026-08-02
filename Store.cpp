@@ -17,6 +17,7 @@ char* Store::copyString(const char* original){
     return temp;
 }
 
+//Default constructor
 Store::Store(const char* sName, const char* sAddress, int warehouseSize)
     :inventory(warehouseSize) {
         storeName = copyString(sName);
@@ -24,11 +25,13 @@ Store::Store(const char* sName, const char* sAddress, int warehouseSize)
         cout << "Store " << storeName << " created." << endl;
     }
 
+//destructor
 Store::~Store(){
     delete[] storeName;
     delete[] address;
     cout << "Store " << storeName << " destroyed." << endl;
 }
+
 
 void Store::openStore(){ //MAKE SURE TO READ ABOUT THIS FUNCTION, WE DONT KNOW IF THIS IS ENOUGH OR IF WE NEED TO ADD MORE FUNCTIONALITY
     cout << storeName << " is now open." << endl;
