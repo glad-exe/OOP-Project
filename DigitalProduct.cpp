@@ -11,7 +11,7 @@ using namespace std;
     // It first checks if the input string is null, and if so, it treats it as an empty string. 
     // It then calculates the length of the input string, allocates memory for a new string of the same length plus one for the null terminator,
     // and copies each character from the original string to the new string.
-    char* Product::copyString(const char* original){
+    char* DigitalProduct::copyString(const char* original){
         if(!original) original = "";
         int len = 0;
         while(original[len] != '\0') len++;
