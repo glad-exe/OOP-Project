@@ -5,16 +5,23 @@
 
 #include "Product.h"
 #include "ShelfLocation.h"
-class BoxedProduct : public Product {
+#include "Label.h"
+class BoxedProduct : public Product, public Label {
     private:
         double        weight;   // Weight of the boxed product in kilograms
         ShelfLocation location; // Shelf location of the boxed product in storage. Location has aisle and slot. Aisle is a char, slot is an int.
     public:
         //CONSTRUCTORS
-        
+
         //Default parametrized constructor
-        BoxedProduct(double weight = 0.0, int bCode = 0, const char* pName = "",
-            double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
+        //SO UNREADABLE OH MY GOD
+        BoxedProduct::BoxedProduct(double pWeight, int bCode, const char* pName,
+        double pPrice, int pStock, const char* pDescription)
+        : Product(bCode, pName, pPrice, pStock, pDescription),
+        Label(pName), 
+        weight(pWeight), location() {
+            cout << "BoxedProduct " << pName << " created." << endl;
+        }
         
         //Copy constructor
         BoxedProduct(const BoxedProduct& other);
@@ -24,6 +31,7 @@ class BoxedProduct : public Product {
         //member functions
         double deliveryCharge() const;
         void   displayInfo() const;
+
 };
  
 #endif

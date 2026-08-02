@@ -27,9 +27,6 @@ class Supplier {
 
         //MEMBER FUNCTIONS
 
-        //Utility function to copy a string, originally in Product class.
-        char* copyString(const char* original);
-
         //copies the barcode list, counts up to the -1 at the end
         int* copyIntArr(const int* original);
 

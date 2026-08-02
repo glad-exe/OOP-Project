@@ -2,21 +2,12 @@
 // Student ID: 20251030 20250141 20250032 20230270
 
 #include "Supplier.h"
+#include "StringUtils.h"
 #include<iostream>
 using namespace std;
     //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
     //see also: store.cpp, digitalproduct.cpp, label.cpp
-    char* Supplier::copyString(const char* original){
-        if(!original) original = "";
-        int len = 0;
-        while(original[len] != '\0') len++;
 
-        char* temp = new char[len + 1];
-        for(int i = 0; i < len; i++) temp[i] = original[i];
-
-        temp[len] = '\0';
-        return temp;
-    }
 
     //same idea as copyString, but for the barcode list. counts up to the -1 at the end
     int* Supplier::copyIntArr(const int* original){

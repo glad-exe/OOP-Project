@@ -4,13 +4,9 @@
 #ifndef LABEL_H
 #define LABEL_H
 
-char* copyString(const char* source);
-
 class Label {
 private:
-    char*        labelText; // Text of the label, stored as a dynamically allocated C-style string.
-    friend char* copyString(const char* source); // THE function. Used in Product, DigitalProduct, Supplier, Store, Label classes.
-
+    char* labelText; // Text of the label, stored as a dynamically allocated C-style string.
 public:
     // CONSTRUCTORS
     // Default constructor
@@ -32,7 +28,6 @@ public:
 
     // MEMBER FUNCTIONS
     void printLabel() const;
-    char* copyString(const char* original);
 };
 
 #endif

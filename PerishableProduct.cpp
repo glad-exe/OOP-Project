@@ -47,5 +47,5 @@
         Product::displayInfo();
         cout << "Storage Temp: " << storageTemperature << " C" << endl;
         cout << "Days Left   : " << daysUntilExpiration << endl;
-        cout << "Expired     : " << hasExpired << endl;
+        cout << "Expired     : " << hasExpired() << endl;
     }

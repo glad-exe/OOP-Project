@@ -11,8 +11,6 @@ class DigitalProduct : public Product
 private:
     double downloadSize;  // Size of the digital product in megabytes (MB)
     char*  licenceKey;    // License key for the digital product, stored as a dynamically allocated C-style string.
-    char*  copyString(const char* source); // THE function. Used in Product, DigitalProduct, Supplier, Store, Label classes.
-
 public:
     //CONSTRUCTORS
     //Default parametrized constructor

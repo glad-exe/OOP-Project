@@ -3,6 +3,7 @@
 
 #include<iostream>
 #include "DigitalProduct.h"
+#include "StringUtils.h"
 using namespace std;
 
     //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
@@ -11,17 +12,7 @@ using namespace std;
     // It first checks if the input string is null, and if so, it treats it as an empty string. 
     // It then calculates the length of the input string, allocates memory for a new string of the same length plus one for the null terminator,
     // and copies each character from the original string to the new string.
-    char* DigitalProduct::copyString(const char* original){
-        if(!original) original = "";
-        int len = 0;
-        while(original[len] != '\0') len++;
-
-        char* temp = new char[len + 1];
-        for(int i = 0; i < len; i++) temp[i] = original[i];
-
-        temp[len] = '\0';
-        return temp;
-    }
+    
 
     //Default parametrized constructor
     // Initializes downloadSize to 0.0 and licenceKey to an empty string.

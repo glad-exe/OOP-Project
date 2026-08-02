@@ -13,7 +13,6 @@ class Store {
         char*     address;       // Address of the store, stored as a dynamically allocated C-style string.
         Inventory inventory;     // Inventory object. read documentation in inventory.h for more information. 
         Supplier  supplier;      // Supplier object
-        char*     copyString(const char* source);
 
     public:
         Store(const char* sName = "", const char* sAddress = "", int warehouseSize = 0);

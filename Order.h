@@ -7,20 +7,17 @@ class Order {
     private:
         const int orderNumber; // Fingerprint for the order number.
         char*     customerName; // COPYSTRING POTENTIAL
-        Product*  shoppingCart; //whyyyyyyyyyyyyyyyyyyyyyyyy
+        Product*  items; //whyyyyyyyyyyyyyyyyyyyyyyyy
 
     public:
         Order(int num = 0, const char* name = "", Product* cart = nullptr);
-        Order(const Order* other);
+        Order(const Order& other);
         ~Order();
 
-        
         void     addItem(Product p, int quantity);
         Order    mergeWith(Order other);
         void     complete(Inventory i);
         
-        
-        char*    copyString(const char* original);
         int      getOrderNumber() const;
         Product* copyProductArr(const int* original);
         double   total();

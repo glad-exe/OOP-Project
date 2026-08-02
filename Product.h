@@ -41,13 +41,13 @@ class Product{
         const char* getDescription() const;
         
         //member functions
-        char*  copyString(const char* original);
+
         void   addStock(int tempStock = 1);
         bool   isSameItem(const Product& other) const;
         double totalStockValue()                const;
         void   displayInfo()                    const;
         int    getProductCount()                const;
-        
+
         friend class Label;
 };
 #endif
