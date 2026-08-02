@@ -5,33 +5,53 @@
 #include "Product.h"
 #include "Inventory.h"
 #include "StringUtils.h"
+#include <iostream>
 
-int Order::getOrderNumber() const {return orderNumber;}
+using namespace std;
 
 Order::Order(int num, const char* name, Product* cart) : orderNumber(num), customerName(copyString(name)) {
-    
+    itemCapacity = 4;
+    itemCount = 0;
+    itemProducts = new Product*[itemCapacity];
+    itemQuantities = new int[itemCapacity];
+    cout << "Order " << orderNumber << " created." << endl;
 }
-Order::Order(const Order& other) : orderNumber(other.orderNumber){
+
+// my pride and joy. due to them being pointer arrays, theres no need to actually copy ANY info
+// i thought this would be bad, cause its not a deep copy, but this is exactly how it should work.
+// think about it! if a site owner changes a product, it should change for everyones carts.
+Order::Order(const Order& other) : orderNumber(other.orderNumber) {
+    
     customerName = copyString(other.customerName);
-
-
+    itemCapacity = other.itemCapacity;
+    itemCount = other.itemCount;
+    
+    itemProducts = new Product*[itemCapacity];
+    itemQuantities = new int[itemCapacity];
+    
+    for (int i = 0; i < itemCount; i++) {
+        itemProducts[i] = other.itemProducts[i]; 
+        itemQuantities[i] = other.itemQuantities[i];
+    }
+    cout << "Order " << orderNumber << " copied." << endl;
 }
 
 Order::~Order() {
     delete[] customerName;
-    delete[] items;
+    delete[] itemProducts;
+    delete[] itemQuantities;
     cout << "Order " << orderNumber << "destroyed.";
 }
 
-void   Order::addItem(Product p, int quantity) {
+void   Order::addItem(Product* p, int quantity) {
 
 }
 
-Order  Order::mergeWith(Order other) {
+Order  Order::mergeWith(const Order& other) {
 
 }
 
-void   Order::complete(Inventory i) {
+void   Order::complete(Inventory& inv) {
 
 }
 

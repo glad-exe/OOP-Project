@@ -5,12 +5,14 @@
 
 class Order {
     private:
-        const int orderNumber; // Fingerprint for the order number.
-        char*     customerName; // COPYSTRING POTENTIAL?
-        Product** itemProducts;  // array of pointers to products.
-        Product*  items; //whyyyyyyyyyyyyyyyyyyyyyyyy
+        const int orderNumber;     // Fingerprint for the order number.
+        char*     customerName;    // COPYSTRING POTENTIAL?
+        Product** itemProducts;    // array of pointers to products.
+        int*      itemQuantities;
         int       itemCount;
         int       itemCapacity;
+
+        void      grow();           // doubles capacity when full
 
     public:
         Order(int num = 0, const char* name = "", Product* _items = nullptr);
@@ -21,7 +23,6 @@ class Order {
         Order    mergeWith(const Order& other);
         void     complete(Inventory& inv);
         
-        int      getOrderNumber() const;
         double   total();
         void     displayOrder();
 
