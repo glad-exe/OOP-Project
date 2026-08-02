@@ -44,21 +44,33 @@ Order::~Order() {
 }
 
 void   Order::addItem(Product* p, int quantity) {
-
+    if (itemCount >= itemCapacity) grow();
+    itemProducts[itemCount] = p;
+    itemQuantities[itemCount] = quantity;
+    itemCount++;
 }
 
 Order  Order::mergeWith(const Order& other) {
 
 }
 
-void   Order::complete(Inventory& inv) {
-
+bool   Order::complete(Inventory& inv) {
+    
 }
 
 double Order::total() {
-
+    double sum = 0.0;
+    for (int i = 0; i < itemCount; i++) {
+        sum += itemProducts[i]->getPrice() * itemQuantities[i];
+    }
+    return sum;
 }
 
 void   Order::displayOrder() {
-
+    cout << "Order " << orderNumber << " - " << customerName << endl;
+    for (int i = 0; i < itemCount; i++) {
+        cout << "  " << itemProducts[i]->getProductName()
+             << " x" << itemQuantities[i] << endl;
+    }
+    cout << "Total: " << total() << endl;
 }

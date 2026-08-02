@@ -21,13 +21,12 @@ class Order {
 
         void     addItem(Product* p, int quantity);
         Order    mergeWith(const Order& other);
-        void     complete(Inventory& inv);
+        bool     complete(Inventory& inv);
         
         double   total();
         void     displayOrder();
 
         friend class DailyReport;
-
 
 };
 

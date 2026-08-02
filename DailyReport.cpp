@@ -25,7 +25,7 @@ using namespace std;
     //goes through every order and checks if the items still match the inventory
     void DailyReport::generate(Inventory& inv, Order orders[], int orderCount){
 
-        cout << "END OF DAY REPORT" << endl;
+        cout << "Daily report: " << endl;
 
         for(int i = 0; i < orderCount; i++){
 
@@ -33,26 +33,21 @@ using namespace std;
 
             for(int j = 0; j < orders[i].itemCount; j++){
 
-                Product* p = orders[i].items[j].product;
-                int qty = orders[i].items[j].quantity;
+                Product* p = orders[i].itemProducts[j];
+                int qty = orders[i].itemQuantities[j];
                 bool found = false;
 
-                //check the shelf
                 for(int s = 0; s < inv.shelfCount; s++){
                     if(inv.shelf[s]->isSameItem(*p)) found = true;
                 }
-
-                //check the warehouse
                 for(int w = 0; w < inv.warehouseCount; w++){
                     if(inv.warehouse[w]->isSameItem(*p)) found = true;
                 }
 
-                //if it was not found anywhere, print a mismatch
                 if(found == false){
-                    cout << "mismatch : " << p->getProductName() << " (qty " << qty << ") was ordered but not found." << endl;
+                    cout << "Mismatch : " << p->getProductName() << " ( " << qty << ") was ordered but not found." << endl;
                 }
             }
         }
-
         cout << "End of report" << endl;
     }
