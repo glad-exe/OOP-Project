@@ -10,6 +10,7 @@ class Supplier {
         char*  supplierPhone;   //Phone number of the supplier, stored as a dynamically allocated C-style string.
         char*  supplierAddress; //Supplier address, stored as a dynamically allocated C-style string.
         int*   supplierCodes;   //Int list of every barcode this supplier uses.
+        int    codeCount;       //how many barcodes are currently in supplierCodes
     public:
         Supplier(const char* name = "", const char* phone = "", const char* address = "", int* codes = nullptr);
         Supplier(const Supplier& other);
