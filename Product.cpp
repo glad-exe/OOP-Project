@@ -108,9 +108,9 @@ using namespace std;
 
     //display info
     void Product::displayInfo() const {
-        cout << "Barcode:      " << barcode     << endl;
-        cout << "Product Name: " << productName << endl;
-        cout << "Price:        " << price       << endl;
-        cout << "In Stock:     " << inStock     << endl;
-        cout << "Description:  " << description << endl;
+        cout << "Barcode      : " << barcode     << endl;
+        cout << "Product Name : " << productName << endl;
+        cout << "Price        : " << price       << endl;
+        cout << "In Stock     : " << inStock     << endl;
+        cout << "Description  : " << description << endl;
     }

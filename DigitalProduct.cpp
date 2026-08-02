@@ -63,6 +63,6 @@ using namespace std;
     //adds download size and licence key
     void DigitalProduct::displayInfo() const {
         Product::displayInfo();
-        cout << "Download Size: " << downloadSize << " MB" << endl;
-        cout << "Licence Key: " << licenceKey << endl;
+        cout << "Download Size: " << downloadSize << "MB" << endl;
+        cout << "Licence Key  : " << licenceKey << endl;
     }

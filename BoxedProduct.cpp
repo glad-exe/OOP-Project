@@ -43,7 +43,7 @@
     //adds weight and delivery charge
     void BoxedProduct::displayInfo() const {
         Product::displayInfo();
-        cout << "Weight: " << weight << " kg" << endl;
+        cout << "Weight         : " << weight << "kg" << endl;
         cout << "Delivery Charge: $" << deliveryCharge() << endl;
         location.displayLocation();
     }

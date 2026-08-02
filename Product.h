@@ -28,19 +28,11 @@ class Product{
         virtual ~Product();
         
         //SETTERS
-        Product& setPrice  (double      tempPrice);
-        Product& setStock  (int         tempStock);
+        Product& setPrice       (double      tempPrice);
+        Product& setStock       (int         tempStock);
+        Product& setName        (const char* newName);
+        Product& setDescription (const char* newDescription);
 
-        Product& setName   (const char* newName) {
-            delete[] productName;
-            productName = copyString(newName);
-            return *this; 
-        }
-        Product& setDescription(const char* newDescription) {
-            delete[] description;
-            description = copyString(newDescription);
-            return *this; 
-        }
         //GETTERS
         int         getBarcode()     const;
         const char* getProductName() const;
@@ -55,6 +47,7 @@ class Product{
         double totalStockValue()                const;
         void   displayInfo()                    const;
         int    getProductCount()                const;
+        
         friend class Label;
 };
 #endif

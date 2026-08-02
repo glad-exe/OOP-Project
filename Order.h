@@ -10,15 +10,26 @@ class Order {
         Product*  shoppingCart; //whyyyyyyyyyyyyyyyyyyyyyyyy
 
     public:
-        Order(int num, char* name, Product* cart);
+        Order(int num = 0, const char* name = "", Product* cart = nullptr);
         Order(const Order* other);
         ~Order();
 
-        void   addItem(Product p, int quantity);
-        Order  mergeWith(Order other);
-        void   complete(Inventory i);
-        double total();
-        void   displayOrder();
+        
+        void     addItem(Product p, int quantity);
+        Order    mergeWith(Order other);
+        void     complete(Inventory i);
+        
+        
+        char*    copyString(const char* original);
+        int      getOrderNumber() const;
+        Product* copyProductArr(const int* original);
+        double   total();
+        void     displayOrder();
+
+
+
+        friend class DailyReport;
+
 
 };
 

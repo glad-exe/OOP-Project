@@ -46,8 +46,6 @@
     void PerishableProduct::displayInfo() const {
         Product::displayInfo();
         cout << "Storage Temp: " << storageTemperature << " C" << endl;
-        cout << "Days Left: " << daysUntilExpiration << endl;
-
-        if (hasExpired()) cout << "Expired: Yes" << endl;
-        else cout << "Expired: No" << endl;
+        cout << "Days Left   : " << daysUntilExpiration << endl;
+        cout << "Expired     : " << hasExpired << endl;
     }

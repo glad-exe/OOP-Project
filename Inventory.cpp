@@ -112,7 +112,6 @@ using namespace std;
     void Inventory::listShelf() const{
         for(int i = 0; i < shelfCount; i++){
             shelf[i]->displayInfo();
-            cout << "-----" << endl;
         }
     }
 

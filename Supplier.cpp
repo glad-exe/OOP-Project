@@ -95,10 +95,10 @@ using namespace std;
     }
     // displys the info
     void Supplier::displayInfo() const {
-        cout << "Company Name: " << supplierName << endl;
-        cout << "Phone:        " << supplierPhone << endl;
-        cout << "Address:      " << supplierAddress << endl;
-        cout << "Barcodes Supplied: ";
+        cout << "Name   : " << supplierName << endl;
+        cout << "Phone  : " << supplierPhone << endl;
+        cout << "Address: " << supplierAddress << endl;
+        cout << "Codes  : ";
 
         int i = 0;
         while(supplierCodes[i] != -1){
