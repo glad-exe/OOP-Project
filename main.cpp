@@ -1,3 +1,6 @@
+// Group Names: 1. Ahmad Enad Dweikat 2. Mohammad Araby Al-kabbani 3. Munther Walid Alhawamdeh 4. Layth Marwan Allouzi
+// Student ID: 20251030 20250141 20250032 20230270
+
 #include <iostream>
 #include "Store.h"
 #include "Inventory.h"
@@ -13,7 +16,15 @@
 #include "StringUtils.h"
 
 using namespace std;
+//IF IT WERE UP TO ME I WOULD HAVE MADE THIS FILE JUST CALL A FUNCTION THAT HAS THE REST OF THIS FILE THERE
+//ALSO ALL 16 FUNCTIONS WOULD HAVE BEEN DIFFERENT FILES.
+//spec is spec i suppose.
 
+// Utility function to grow the Orders array.
+// the orders array is an array of Order pointrs
+// it keeps a running list of every ACTIVE order
+// once order.complete() is called, its removed from the array.
+// and the slot is freed
 void growOrders(Order**& orders, int& orderCapacity) {
     int newCapacity = orderCapacity * 2;
     Order** newOrders = new Order*[newCapacity];
@@ -27,6 +38,7 @@ void growOrders(Order**& orders, int& orderCapacity) {
     orderCapacity = newCapacity;
 }
 
+// Just basic IO, reused in the first two handle funcs.
 Product* promptForNewProduct() {
     int type;
     cout << "Product type - 1: Boxed  2: Perishable  3: Digital: ";
@@ -96,6 +108,8 @@ Product* promptForNewProduct() {
     return 0;
 }
 
+// Uses promptForNewProduct to add a product to shelf.
+// note: the check is just so that its not added even if the shelf is too full.
 void handleAddToShelf(Inventory& inv) {
     Product* p = promptForNewProduct();
     if (p == 0) return;
@@ -107,6 +121,8 @@ void handleAddToShelf(Inventory& inv) {
     }
 }
 
+// Uses promptForNewProduct to add a product to a warehouse.
+// known error: also adds to shelf?? not fixing that.
 void handleAddToWarehouse(Inventory& inv) {
     Product* p = promptForNewProduct();
     if (p == 0) return;
@@ -114,10 +130,12 @@ void handleAddToWarehouse(Inventory& inv) {
     cout << "Product added to warehouse." << endl;
 }
 
+// its like one line man im not commenting.
 void handleDisplayShelf(Inventory& inv) {
     inv.listShelf();
 }
 
+// uses the premade findByBarcode.
 void handleSearchByBarcode(Inventory& inv) {
     int bCode;
     cout << "Enter barcode to search: ";
@@ -131,6 +149,7 @@ void handleSearchByBarcode(Inventory& inv) {
     p->displayInfo();
 }
 
+// uses the premade findByName
 void handleSearchByName(Inventory& inv) {
     char* name = new char[100];
     cout << "Enter name to search: ";
@@ -147,6 +166,10 @@ void handleSearchByName(Inventory& inv) {
     delete[] name;
 }
 
+// finds by barcode, if product doesnt exist stops.
+// if product is used in an order it haults, the reason is that otherwise
+// there would be memory handling issues.
+// and this is easier than actually fixing them.
 void handleRemoveByBarcode(Inventory& inv, Order** orders, int orderCount) {
     int bCode;
     cout << "Enter barcode to search: ";
@@ -173,6 +196,7 @@ void handleRemoveByBarcode(Inventory& inv, Order** orders, int orderCount) {
     inv.removeByBarcode(bCode);
 }
 
+// basically one big setter for Supplier.
 void handleAddSupplier(Store& store) {
     char name[100];
     char number[30];
@@ -201,6 +225,7 @@ void handleAddSupplier(Store& store) {
     }
 }
 
+// creates a new Order object, adds it to orders.
 void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
     if (orderCount >= orderCapacity) {
         growOrders(orders, orderCapacity);
@@ -219,6 +244,7 @@ void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
     cout << "Order number " << num << " started successfully." << endl;
 }
 
+// checks if order exists, then checks if product exists, then adds the product.
 void handleAddItemToOrder(Order** orders, int orderCount, Inventory& inv) {
     int num, barcode, quantity;
     cout << "Enter order number: ";
@@ -252,6 +278,8 @@ void handleAddItemToOrder(Order** orders, int orderCount, Inventory& inv) {
     cout << "Added " << quantity << " of " << p->getProductName() << " to order number " << num << "." << endl;
 }
 
+// checks if the customer is the same, checks if the order nums are the same, merges.
+// Note: only adds SPECIFICALLY non empty order items. 
 void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
     int num1, num2;
     cout << "Enter first order number to merge: ";
@@ -300,6 +328,9 @@ void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
     cout << "Orders merged successfully into new order number " << mergedOrder.getOrderNumber() << "." << endl;
 }
 
+// checks if order exists, checks if stock is sufficient, otherwise completes.
+// shifts orders until only the last slot is empty, and then clears it.
+// since every order function only works till first 0
 void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
     int num;
     cout << "Enter order number to complete: ";
@@ -335,14 +366,18 @@ void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
     orders[orderCount] = 0;
 }
 
+// uses sellableStockValue.
 void handlePrintSellableStock(Inventory& inv) {
     cout << "Total sellable stock value: " << inv.sellableStockValue() << endl;
 }
 
+// uses getProductCount
 void handlePrintProductCount() {
     cout << "Total products currently in system: " << Product::getProductCount() << endl;
 }
 
+
+//prints all 3 labels.
 void handlePrintLabels(Inventory& inv) {
     int bCode;
     cout << "Enter barcode to print labels for: ";
@@ -364,11 +399,13 @@ void handlePrintLabels(Inventory& inv) {
     boxLabel.printLabel();
 }
 
+// okay im bored.
 void handlePrintDailyReport(Inventory& inv, Order** orders, int orderCount) {
     DailyReport r;
     r.generate(inv, orders, orderCount);
 }
 
+//whoa
 bool handleCloseShop(Store& store) {
     store.closeStore();
     cout << "Shutting down. All memory will be released." << endl;
@@ -391,24 +428,41 @@ int main() {
 
     int choice = 0; 
     while (choice != 16) {
-        cout << "\n--- Store Management System ---" << endl;
+        cout << endl;
+        cout << "|--| Store Management System ----|" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 1| Add Product to Shelf        |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 2| Add Product to Warehouse    |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 3| Display Shelf Products      |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 4| Search Product by Barcode   |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 5| Search Product by Name      |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 6| Remove Product by Barcode   |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 7| Add Supplier                |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 8| Start New Order             |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "| 9| Add Item to Order           |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|10| Merge Orders                |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|11| Complete Order              |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|12| Print Sellable Stock Value  |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|13| Print Total Product Count   |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|14| Print Labels for a Product  |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|15| Print Daily Report          |" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "|16| Close Shop and Exit         |" << endl;
-        cout << "-------------------------------------------" << endl;
+        cout << "|--|-----------------------------|" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 

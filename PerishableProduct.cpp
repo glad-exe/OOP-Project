@@ -36,7 +36,7 @@
     }
 
     //frozen goods cost more to deliver.
-    //
+    //completely random amounts. change up to spec
     double PerishableProduct::deliveryCharge() const {
         if (storageTemperature <= 4.0) return 15.0;
         return 5.0;

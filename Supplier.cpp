@@ -20,6 +20,8 @@ using namespace std;
         return temp;
     }
 
+    //CONSTRUCTORS
+    //defualt para
     Supplier::Supplier(const char* name, const char* phone, const char* address, int* codes) {
         supplierName = copyString(name);
         supplierPhone = copyString(phone);
@@ -33,12 +35,14 @@ using namespace std;
             supplierCodes = copyIntArr(codes);
         }
     }
+    //copy constructor
     Supplier::Supplier(const Supplier& other) {
         supplierName = copyString(other.supplierName);
         supplierPhone = copyString(other.supplierPhone);
         supplierAddress = copyString(other.supplierAddress);
         supplierCodes = copyIntArr(other.supplierCodes);
     }
+    //destructor
     Supplier::~Supplier() {
         delete[] supplierName;
         delete[] supplierPhone;
@@ -47,21 +51,25 @@ using namespace std;
     }
 
     //SETTERS
+
     Supplier& Supplier::setSupplierName    (const char* name) {
         delete[] supplierName;
         supplierName = copyString(name);
         return *this;
     }
+
     Supplier& Supplier::setSupplierPhone   (const char* phone) {
         delete[] supplierPhone;
         supplierPhone = copyString(phone);
         return *this;
     }
+
     Supplier& Supplier::setSupplierAddress (const char* address) {
         delete[] supplierAddress;
         supplierAddress = copyString(address);
         return *this;
     }
+    
     Supplier& Supplier::setSupplierCodes   (int* codes) {
         delete[] supplierCodes;
         supplierCodes = copyIntArr(codes);
@@ -87,12 +95,13 @@ using namespace std;
         delete[] supplierCodes;
         supplierCodes = temp;
     }
+
     // displays the info
     void Supplier::displayInfo() const {
-        cout << "Name   : " << supplierName << endl;
-        cout << "Phone  : " << supplierPhone << endl;
-        cout << "Address: " << supplierAddress << endl;
-        cout << "Codes  : ";
+        cout << "Name    : " << supplierName << endl;
+        cout << "Phone   : " << supplierPhone << endl;
+        cout << "Address : " << supplierAddress << endl;
+        cout << "Codes   : ";
 
         int i = 0;
         while(supplierCodes[i] != -1){

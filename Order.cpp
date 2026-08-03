@@ -35,15 +35,23 @@ Order::Order(const Order& other) : orderNumber(other.orderNumber) {
     }
     cout << "Order " << orderNumber << " copied." << endl;
 }
-
+//Destructor
+//frees up all dynamically allocated memory.
 Order::~Order() {
     delete[] customerName;
     delete[] itemProducts;
     delete[] itemQuantities;
     cout << "Order " << orderNumber << "destroyed.";
 }
-int Order::getOrderNumber() const { return orderNumber; }
 
+// GETTERS
+int        Order::getOrderNumber()    const { return orderNumber; }
+Product**  Order::getItemProducts()   const {return itemProducts;}
+int*       Order::getItemQuantities() const {return itemQuantities;}
+char*      Order::getCustomerName()   const {return customerName;}
+int        Order::getItemCount()      const { return itemCount; }
+
+// I was gonna rewrite std::vector but i started the project too late for that.
 void   Order::grow() {
     int newCapacity = itemCapacity * 2;
     Product** newProducts = new Product*[newCapacity];
@@ -61,6 +69,7 @@ void   Order::grow() {
     itemCapacity = newCapacity;
 }
 
+//adds an item to an product array.
 void   Order::addItem(Product* p, int quantity) {
     for (int i = 0; i < itemCount; i++) {
         if (itemProducts[i]->getBarcode() == p->getBarcode()) {
@@ -125,7 +134,3 @@ void   Order::displayOrder() {
     }
     cout << "Total: " << total() << endl;
 }
-Product** Order::getItemProducts()   const {return itemProducts;}
-int*      Order::getItemQuantities() const {return itemQuantities;}
-char*     Order::getCustomerName()   const {return customerName;}
-int       Order::getItemCount()      const { return itemCount; }
