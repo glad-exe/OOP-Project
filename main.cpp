@@ -250,6 +250,10 @@ void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
         cout << "One or both order numbers not found." << endl;
         return;
     }
+    if (!sameText(orders[index1]->getCustomerName(), orders[index2]->getCustomerName())) {
+        cout << "Error: Cannot merge orders from different customers." << endl;
+        return; 
+    }
 
     Order mergedOrder = orders[index1]->mergeWith(*orders[index2]);
     delete orders[index1];
