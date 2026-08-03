@@ -149,6 +149,14 @@ void handleAddSupplier(Store& store) {
     char name[100];
     char number[30];
     char address[200];
+
+    cin.ignore();
+    cout << "Enter supplier name: ";
+    cin.getline(name, 100);
+    cout << "Enter supplier phone: ";
+    cin.getline(number, 30);
+    cout << "Enter supplier address: ";
+    cin.getline(address, 200);
     
     store.getSupplier().setSupplierName(name);
     store.getSupplier().setSupplierPhone(number);
@@ -238,15 +246,17 @@ void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
     delete orders[index1];
     delete orders[index2];
 
-    for (int j = index2; j < orderCount - 1; j++) {
-        orders[j] = orders[j + 1];
+    orders[index1] = 0; 
+    orders[index2] = 0;
+
+    int newCount = 0;
+    for (int i = 0; i < orderCount; i++) {
+        if (orders[i] != 0) {
+            orders[newCount] = orders[i];
+            newCount++;
+        }
     }
-    orderCount--;
-    
-    for (int j = index1; j < orderCount - 1; j++) {
-        orders[j] = orders[j + 1];
-    }
-    orderCount--;
+    orderCount = newCount;
 
     if (orderCount >= orderCapacity) {
         growOrders(orders, orderCapacity);
@@ -256,8 +266,6 @@ void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
     orderCount++;
     
     cout << "Orders merged successfully into new order number " << mergedOrder.getOrderNumber() << "." << endl;
-
-
 }
 
 void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
