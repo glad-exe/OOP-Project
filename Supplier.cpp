@@ -8,7 +8,6 @@ using namespace std;
     //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
     //see also: store.cpp, digitalproduct.cpp, label.cpp
 
-
     //same idea as copyString, but for the barcode list. counts up to the -1 at the end
     int* Supplier::copyIntArr(const int* original){
         int len = 0;

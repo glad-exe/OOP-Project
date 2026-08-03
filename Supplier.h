@@ -20,13 +20,13 @@ class Supplier {
         Supplier& setSupplierAddress   (const char* address);
         Supplier& setSupplierCodes     (int* codes);
         //GETTERS
-        const char* getSupplierName    ()  const;
+        const char* getSupplierName    () const;
         const char* getSupplierPhone   () const;
         const char* getSupplierAddress () const;
         int*        getSupplierCodes   () const;
 
+        Supplier& operator=(const Supplier& other) = delete;
         //MEMBER FUNCTIONS
-
         //copies the barcode list, counts up to the -1 at the end
         int* copyIntArr(const int* original);
 
