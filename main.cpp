@@ -14,22 +14,86 @@
 
 using namespace std;
 
-void handleAddToShelf(Store& store) {
+Product* promptForNewProduct() {
+    int type;
+    cout << "Product type - 1: Boxed  2: Perishable  3: Digital: ";
+    cin >> type;
 
+    int barcode;
+    string name, description;
+    double price;
+    int stock;
+
+    cout << "Barcode: ";
+    cin >> barcode;
+    cin.ignore();
+    cout << "Name: ";
+    getline(cin, name);
+    cout << "Price: ";
+    cin >> price;
+    if (price < 0) { cout << "Price cannot be negative." << endl; return 0; }
+    cout << "Stock: ";
+    cin >> stock;
+    if (stock < 0) { cout << "Stock cannot be negative." << endl; return 0; }
+    cin.ignore();
+    cout << "Description: ";
+    getline(cin, description);
+
+    if (type == 1) {
+        double weight;
+        cout << "Weight (kg): ";
+        cin >> weight;
+        return new BoxedProduct(weight, barcode, name.c_str(), price, stock, description.c_str());
+    }
+    else if (type == 2) {
+        double temp; int daysLeft;
+        cout << "Storage temperature: ";
+        cin >> temp;
+        cout << "Days until expiration: ";
+        cin >> daysLeft;
+        return new PerishableProduct(barcode, name.c_str(), price, stock, description.c_str(), temp, daysLeft);
+    }
+    else if (type == 3) {
+        double size;
+        string licence;
+        cout << "Download size (MB): ";
+        cin >> size;
+        cin.ignore();
+        cout << "Licence key: ";
+        getline(cin, licence);
+        return new DigitalProduct(size, licence.c_str(), barcode, name.c_str(), price, stock, description.c_str());
+    }
+
+    cout << "Invalid product type." << endl;
+    return 0;
 }
 
-void handleAddToWarehouse(Store& store) {
-
+void handleAddToShelf(Inventory& inv) {
+    Product* p = promptForNewProduct();
+    if (p == 0) return;
+    inv.addProduct(p, true);
+    cout << "Product added to shelf." << endl;
 }
 
-void handleDisplayShelf(Store& store) {
-
+void handleAddToWarehouse(Inventory& inv) {
+    Product* p = promptForNewProduct();
+    if (p == 0) return;
+    inv.addProduct(p, true);
+    cout << "Product added to shelf." << endl;
 }
 
-void handleSearchByBarcode(Store& store) {
-
+void handleDisplayShelf(Inventory& inv) {
+    inv.listShelf();
 }
 
+void handleSearchByBarcode(Inventory& inv, int bCode) {
+    Product* p = inv.findByBarcode(bCode);
+    if (p == 0) {
+        cout << "No product found with barcode " << bCode << "." << endl;
+        return;
+    }
+    p->displayInfo();
+}
 void handleSearchByName(Store& store) {
 
 }
