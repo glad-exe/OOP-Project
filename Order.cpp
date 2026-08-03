@@ -62,6 +62,12 @@ void   Order::grow() {
 }
 
 void   Order::addItem(Product* p, int quantity) {
+    for (int i = 0; i < itemCount; i++) {
+        if (itemProducts[i]->getBarcode() == p->getBarcode()) {
+            itemQuantities[i] += quantity; 
+            return; 
+        }
+    }
     if (itemCount >= itemCapacity) grow();
     itemProducts[itemCount] = p;
     itemQuantities[itemCount] = quantity;
