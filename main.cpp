@@ -113,8 +113,21 @@ void handleSearchByName(Inventory& inv) {
     p->displayInfo();
 }
 
-void handleRemoveByBarcode(Store& store) {
+void handleRemoveByBarcode(Inventory& inv) {
+    int bCode;
+    cout << "Enter barcode to search: ";
+    cin >> bCode;
 
+    Product* p = inv.findByBarcode(bCode);
+    if (p == 0) {
+        cout << "No product found with barcode " << bCode << "." << endl;
+        return;
+    } else {
+        cout << "Removing: " << endl;
+        p->displayInfo();
+        inv.removeByBarcode(bCode);
+        delete[] p;
+    }
 }
 
 void handleAddSupplier(Store& store) {
@@ -152,8 +165,10 @@ void handlePrintDailyReport(Inventory& inv, Order orders[], int orderCount) {
 
 }
 
-void handleCloseShop(Store& store) {
-
+bool handleCloseShop(Store& store) {
+    store.closeStore();
+    cout << "Shutting down. All memory will be released." << endl;
+    return false; 
 }
 
 
