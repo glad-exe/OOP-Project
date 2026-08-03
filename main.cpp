@@ -144,7 +144,6 @@ void handleRemoveByBarcode(Inventory& inv) {
     }
 }
 
-<<<<<<< HEAD
 void handleAddSupplier(Store& store) {
     char name[100];
     char number[30];
@@ -163,10 +162,6 @@ void handleAddSupplier(Store& store) {
         cin >> barcode;
         store.getSupplier().addSuppliedProduct(barcode);
     }
-=======
-void handleAddSupplier(Supplier& supplier) {
-
->>>>>>> d87770312b11391a03d66425070aff464ce4ba54
 }
 
 void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
@@ -188,10 +183,78 @@ void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
 }
 
 void handleAddItemToOrder(Order** orders, int orderCount, Inventory& inv) {
+    int num, barcode, quantity;
+    cout << "Enter order number: ";
+    cin >> num;
 
+    int index = -1;
+    for (int i = 0; i < orderCount; i++) {
+        if (orders[i]->getOrderNumber() == num) {
+            index = i;
+            break;
+        }
+    }
+    if (index == -1) {
+        cout << "No order found with number " << num << "." << endl;
+        return;
+    }
+    cout << "Enter product barcode: ";
+    cin >> barcode;
+    Product* p = inv.findByBarcode(barcode);
+    if (p == 0) {
+        cout << "No product found with barcode " << barcode << "." << endl;
+        return;
+    }
+    cout << "Enter quantity: ";
+    cin >> quantity;
+    if (quantity <= 0) {
+        cout << "Invalid quantity." << endl;
+        return;
+    }
+    orders[index]->addItem(p, quantity);
+    cout << "Added " << quantity << " of " << p->getProductName() << " to order number " << num << "." << endl;
 }
 
 void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
+    int num1, num2;
+    cout << "Enter first order number to merge: ";
+    cin >> num1;
+    cout << "Enter second order number to merge: ";
+    cin >> num2;
+
+    int index1 = -1, index2 = -1;
+    for (int i = 0; i < orderCount; i++) {
+        if (orders[i]->getOrderNumber() == num1) index1 = i;
+        if (orders[i]->getOrderNumber() == num2) index2 = i;
+    }
+
+    if (index1 == -1 || index2 == -1) {
+        cout << "One or both order numbers not found." << endl;
+        return;
+    }
+
+    Order mergedOrder = orders[index1]->mergeWith(*orders[index2]);
+    delete orders[index1];
+    delete orders[index2];
+
+    for (int j = index2; j < orderCount - 1; j++) {
+        orders[j] = orders[j + 1];
+    }
+    orderCount--;
+    
+    for (int j = index1; j < orderCount - 1; j++) {
+        orders[j] = orders[j + 1];
+    }
+    orderCount--;
+
+    if (orderCount >= orderCapacity) {
+        growOrders(orders, orderCapacity);
+    }
+    
+    orders[orderCount] = new Order(mergedOrder);
+    orderCount++;
+    
+    cout << "Orders merged successfully into new order number " << mergedOrder.getOrderNumber() << "." << endl;
 
 
 }
