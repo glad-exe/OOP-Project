@@ -180,7 +180,7 @@ void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
     bool success = orders[index]->complete(inv);
 
     if (!success) {
-        cout << "Order could not be completed - insufficient stock." << endl;
+        cout << "Order could not be completed because of insufficient stock." << endl;
         return;
     }
 
