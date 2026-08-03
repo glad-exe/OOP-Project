@@ -91,8 +91,8 @@ void handleAddToShelf(Inventory& inv) {
 void handleAddToWarehouse(Inventory& inv) {
     Product* p = promptForNewProduct();
     if (p == 0) return;
-    inv.addProduct(p, true);
-    cout << "Product added to shelf." << endl;
+    inv.addProduct(p, false);
+    cout << "Product added to warehouse." << endl;
 }
 
 void handleDisplayShelf(Inventory& inv) {
@@ -113,17 +113,18 @@ void handleSearchByBarcode(Inventory& inv) {
 }
 
 void handleSearchByName(Inventory& inv) {
-    char* name;
-    cout << "Enter barcode to search: ";
+    char* name = new char[100];
+    cout << "Enter name to search: ";
     cin.ignore();
     cin.getline(name, 100);
 
     Product* p = inv.findByName(name);
     if (p == 0) {
-        cout << "No product found with barcode " << name << "." << endl;
+        cout << "No product found with name " << name << "." << endl;
         return;
     }
     p->displayInfo();
+    delete[] name;
 }
 
 void handleRemoveByBarcode(Inventory& inv) {
@@ -139,10 +140,11 @@ void handleRemoveByBarcode(Inventory& inv) {
         cout << "Removing: " << endl;
         p->displayInfo();
         inv.removeByBarcode(bCode);
-        delete[] p;
+        delete p;
     }
 }
 
+<<<<<<< HEAD
 void handleAddSupplier(Store& store) {
     char name[100];
     char number[30];
@@ -161,10 +163,28 @@ void handleAddSupplier(Store& store) {
         cin >> barcode;
         store.getSupplier().addSuppliedProduct(barcode);
     }
+=======
+void handleAddSupplier(Supplier& supplier) {
+
+>>>>>>> d87770312b11391a03d66425070aff464ce4ba54
 }
 
 void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
+    if (orderCount >= orderCapacity) {
+        growOrders(orders, orderCapacity);
+    }
 
+    int num;
+    char name[100];
+    cout << "Enter order number: ";
+    cin >> num;
+    cin.ignore();
+    cout << "Enter customer name: ";
+    cin.getline(name, 100);
+
+    orders[orderCount] = new Order(num, name);
+    orderCount++;
+    cout << "Order number " << num << " started successfully." << endl;
 }
 
 void handleAddItemToOrder(Order** orders, int orderCount, Inventory& inv) {

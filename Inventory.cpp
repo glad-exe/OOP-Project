@@ -53,6 +53,7 @@ using namespace std;
     }
 
     //removes product by its barcode
+    //needs to be fixed, because it doesnt delete the product from memory, just from the array
     void Inventory::removeByBarcode(int barcode){
         for(int i = 0; i < shelfCount; i++){
             if(shelf[i]->getBarcode() == barcode){
