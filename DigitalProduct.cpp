@@ -4,7 +4,6 @@
 #include<iostream>
 #include "DigitalProduct.h"
 #include "StringUtils.h"
-using namespace std;
 
     //Default parametrized constructor
     // Initializes downloadSize to 0.0 and licenceKey to an empty string.
@@ -15,7 +14,7 @@ using namespace std;
 
             downloadSize = dSize;
             licenceKey = copyString(lKey);
-            cout << "DigitalProduct " << pName << " created." << endl;
+            std::cout << "DigitalProduct " << pName << " created." << std::endl;
     }
 
     //Copy constructor
@@ -26,14 +25,14 @@ using namespace std;
 
             downloadSize = og.downloadSize;
             licenceKey = copyString(og.licenceKey);
-            cout << "DigitalProduct copied." << endl;
+            std::cout << "DigitalProduct copied." << std::endl;
     }
 
     //Destructor
     //Frees the dynamically allocated memory for licenceKey
     DigitalProduct::~DigitalProduct() {
         delete[] licenceKey;
-        cout << "DigitalProduct destroyed." << endl;
+        std::cout << "DigitalProduct destroyed." << std::endl;
     }
     //member functions
     //delivery charge for digital products is always 0.0
@@ -46,6 +45,6 @@ using namespace std;
     //adds download size and licence key
     void DigitalProduct::displayInfo() const {
         Product::displayInfo();
-        cout << "Download Size: " << downloadSize << "MB" << endl;
-        cout << "Licence Key  : " << licenceKey << endl;
+        std::cout << "Download Size: " << downloadSize << "MB" << std::endl;
+        std::cout << "Licence Key  : " << licenceKey << std::endl;
     }

@@ -3,7 +3,6 @@
 #ifndef PRODUCT_H
 #define PRODUCT_H
 #include<iostream>
-using namespace std;
 class Product{
     // protected so that we can use it in ther classes.
     // inheritance is used in DigitalProduct, BoxedProduct, PerishableProduct classes.

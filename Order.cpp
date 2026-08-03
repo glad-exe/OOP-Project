@@ -8,14 +8,13 @@
 
 #include <iostream>
 
-using namespace std;
 
 Order::Order(int num, const char* name) : orderNumber(num), customerName(copyString(name)) {
     itemCapacity = 4;
     itemCount = 0;
     itemProducts = new Product*[itemCapacity];
     itemQuantities = new int[itemCapacity];
-    cout << "Order " << orderNumber << " created." << endl;
+    std::cout << "Order " << orderNumber << " created." << std::endl;
 }
 
 // my pride and joy. due to them being pointer arrays, theres no need to actually copy ANY info
@@ -33,7 +32,7 @@ Order::Order(const Order& other) : orderNumber(other.orderNumber) {
         itemProducts[i] = other.itemProducts[i]; 
         itemQuantities[i] = other.itemQuantities[i];
     }
-    cout << "Order " << orderNumber << " copied." << endl;
+    std::cout << "Order " << orderNumber << " copied." << std::endl;
 }
 //Destructor
 //frees up all dynamically allocated memory.
@@ -41,7 +40,7 @@ Order::~Order() {
     delete[] customerName;
     delete[] itemProducts;
     delete[] itemQuantities;
-    cout << "Order " << orderNumber << "destroyed.";
+    std::cout << "Order " << orderNumber << "destroyed.";
 }
 
 // GETTERS
@@ -85,7 +84,7 @@ void   Order::addItem(Product* p, int quantity) {
 
 Order   Order::mergeWith(const Order& other) {
     if (!sameText(customerName, other.customerName)) {
-        cout << "Can not merge two orders from different customers." << endl;
+        std::cout << "Can not merge two orders from different customers." << std::endl;
         return *this;
     }
 
@@ -127,10 +126,10 @@ double Order::total() {
 }
 
 void   Order::displayOrder() {
-    cout << "Order " << orderNumber << " - " << customerName << endl;
+    std::cout << "Order " << orderNumber << " - " << customerName << std::endl;
     for (int i = 0; i < itemCount; i++) {
-        cout << "  " << itemProducts[i]->getProductName()
-             << " x" << itemQuantities[i] << endl;
+        std::cout << "  " << itemProducts[i]->getProductName()
+             << " x" << itemQuantities[i] << std::endl;
     }
-    cout << "Total: " << total() << endl;
+    std::cout << "Total: " << total() << std::endl;
 }

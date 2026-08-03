@@ -4,9 +4,6 @@
 #include "Supplier.h"
 #include "StringUtils.h"
 #include<iostream>
-using namespace std;
-    //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
-    //see also: store.cpp, digitalproduct.cpp, label.cpp
 
     //same idea as copyString, but for the barcode list. counts up to the -1 at the end
     int* Supplier::copyIntArr(const int* original){
@@ -98,15 +95,15 @@ using namespace std;
 
     // displays the info
     void Supplier::displayInfo() const {
-        cout << "Name    : " << supplierName << endl;
-        cout << "Phone   : " << supplierPhone << endl;
-        cout << "Address : " << supplierAddress << endl;
-        cout << "Codes   : ";
+        std::cout << "Name    : " << supplierName << std::endl;
+        std::cout << "Phone   : " << supplierPhone << std::endl;
+        std::cout << "Address : " << supplierAddress << std::endl;
+        std::cout << "Codes   : " << std::endl;
 
         int i = 0;
         while(supplierCodes[i] != -1){
-            cout << supplierCodes[i] << " ";
+            std::cout << supplierCodes[i] << " ";
             i++;
         }
-        cout << endl;
+        std::cout << std::endl;
     }

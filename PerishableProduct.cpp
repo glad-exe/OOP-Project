@@ -11,7 +11,7 @@
         : Product(bCode, pName, pPrice, pStock, pDescription) {
         storageTemperature = sTemp;
         daysUntilExpiration = dUntilExp;
-        cout << "PerishableProduct " << pName << " created." << endl;
+        std::cout << "PerishableProduct " << pName << " created." << std::endl;
     }
 
     //Copy constructor
@@ -19,12 +19,12 @@
         : Product(og) {
         storageTemperature = og.storageTemperature;
         daysUntilExpiration = og.daysUntilExpiration;
-        cout << "PerishableProduct " << og.productName << " copied." << endl;
+        std::cout << "PerishableProduct " << og.productName << " copied." << std::endl;
     }
 
     //Destructor
     PerishableProduct::~PerishableProduct() {
-        cout << "PerishableProduct " << productName << " destroyed." << endl;
+        std::cout << "PerishableProduct " << productName << " destroyed." << std::endl;
     }
 
     //MEMBER FUNCTIONS
@@ -45,7 +45,7 @@
     //shows product info plus the extra perishable goods.
     void PerishableProduct::displayInfo() const {
         Product::displayInfo();
-        cout << "Storage Temp: " << storageTemperature << " C" << endl;
-        cout << "Days Left   : " << daysUntilExpiration << endl;
-        cout << "Expired     : " << hasExpired() << endl;
+        std::cout << "Storage Temp: " << storageTemperature << " C" << std::endl;
+        std::cout << "Days Left   : " << daysUntilExpiration << std::endl;
+        std::cout << "Expired     : " << hasExpired() << std::endl;
     }

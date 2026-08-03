@@ -5,7 +5,7 @@
 #include "Inventory.h"
 #include "PerishableProduct.h"
 #include "StringUtils.h"
-using namespace std;
+
 
     //CONSTRUCTOR
     Inventory::Inventory(int size){
@@ -18,7 +18,7 @@ using namespace std;
         warehouse = new Product*[warehouseSize];
         for(int i = 0; i < warehouseSize; i++) warehouse[i] = 0;
 
-        cout << "Inventory created." << endl;
+        std::cout << "Inventory created." << std::endl;
     }
 
     //DESTRUCTOR
@@ -27,7 +27,7 @@ using namespace std;
         for(int i = 0; i < warehouseCount; i++) delete warehouse[i];
         delete[] warehouse;
 
-        cout << "Inventory destroyed." << endl;
+        std::cout << "Inventory destroyed." << std::endl;
     }
 
     //member funcions
@@ -36,7 +36,7 @@ using namespace std;
     bool Inventory::addProduct(Product* product, bool toShelf){
         if(toShelf){
             if(shelfCount >= 50){
-                cout << "shelf is full, cant add no more." << endl;
+                std::cout << "shelf is full, cant add no more." << std::endl;
                 return false;
             }
             shelf[shelfCount] = product;
@@ -44,7 +44,7 @@ using namespace std;
         }
         else{
             if(warehouseCount >= warehouseSize){
-                cout << "warehouse full, cant add no more." << endl;
+                std::cout << "warehouse full, cant add no more." << std::endl;
                 return false;
             }
             warehouse[warehouseCount] = product;
@@ -75,7 +75,7 @@ using namespace std;
             }
         }
 
-        cout << "barcode not found, sorry." << endl;
+        std::cout << "barcode not found, sorry." << std::endl;
     }
 
     //finds product by barcode

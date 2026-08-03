@@ -122,7 +122,6 @@ void handleAddToShelf(Inventory& inv) {
 }
 
 // Uses promptForNewProduct to add a product to a warehouse.
-// known error: also adds to shelf?? not fixing that.
 void handleAddToWarehouse(Inventory& inv) {
     Product* p = promptForNewProduct();
     if (p == 0) return;
@@ -429,6 +428,7 @@ int main() {
     int choice = 0; 
     while (choice != 16) {
         cout << endl;
+        cout << "|--------------------------------|" << endl;
         cout << "|--| Store Management System ----|" << endl;
         cout << "|--|-----------------------------|" << endl;
         cout << "| 1| Add Product to Shelf        |" << endl;
@@ -465,6 +465,7 @@ int main() {
         cout << "|--|-----------------------------|" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
+        cout << endl;
 
         if (cin.fail()) {
             cin.clear();

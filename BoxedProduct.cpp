@@ -14,7 +14,7 @@
     : Product(bCode, pName, pPrice, pStock, pDescription), 
       Label(pLabelText), 
       weight(pWeight), location() {
-    cout << "BoxedProduct " << pName << " created." << endl;
+    std::cout << "BoxedProduct " << pName << " created." << std::endl;
     }
 
     //Copy constructor
@@ -22,14 +22,14 @@
     // and also copies the weight and location from the other BoxedProduct object.
     BoxedProduct::BoxedProduct(const BoxedProduct& other) 
     : Product(other), Label(other), weight(other.weight), location(other.location) {
-        cout << "BoxedProduct " << other.productName << " copied." << endl;
+        std::cout << "BoxedProduct " << other.productName << " copied." << std::endl;
     }
 
     //Destructor
     // Calls the base Product destructor
     // basic, no need to handle anything in heap.
     BoxedProduct::~BoxedProduct() {
-        cout << "BoxedProduct " << productName << " destroyed." << endl;
+        std::cout << "BoxedProduct " << productName << " destroyed." << std::endl;
     }
 
     //member functions
@@ -46,8 +46,8 @@
     //adds weight and delivery charge
     void BoxedProduct::displayInfo() const {
         Product::displayInfo();
-        cout << "Weight         : " << weight << "kg" << endl;
-        cout << "Delivery Charge: $" << deliveryCharge() << endl;
+        std::cout << "Weight         : " << weight << "kg" << std::endl;
+        std::cout << "Delivery Charge: $" << deliveryCharge() << std::endl;
         location.displayLocation();
     }
 

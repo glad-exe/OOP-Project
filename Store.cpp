@@ -4,30 +4,29 @@
 #include "Store.h"
 #include "StringUtils.h"
 #include <iostream>
-using namespace std;
 
 //Default constructor
 Store::Store(const char* sName, const char* sAddress, int warehouseSize)
     :inventory(warehouseSize) {
         storeName = copyString(sName);
         address = copyString(sAddress);
-        cout << "Store " << storeName << " created." << endl;
+        std::cout << "Store " << storeName << " created." << std::endl;
     }
 
 //destructor
 Store::~Store(){
-    cout << "Store " << storeName << " destroyed." << endl;
+    std::cout << "Store " << storeName << " destroyed." << std::endl;
     delete[] storeName;
     delete[] address;
 }
 
 
 void Store::openStore(){ //MAKE SURE TO READ ABOUT THIS FUNCTION, WE DONT KNOW IF THIS IS ENOUGH OR IF WE NEED TO ADD MORE FUNCTIONALITY
-    cout << storeName << " is now open." << endl;
+    std::cout << storeName << " is now open." << std::endl;
 }
 
 void Store::closeStore(){ //MAKE SURE TO READ ABOUT THIS FUNCTION, WE DONT KNOW IF THIS IS ENOUGH OR IF WE NEED TO ADD MORE FUNCTIONALITY
-    cout << storeName << " is now closed." << endl;
+    std::cout << storeName << " is now closed." << std::endl;
 }
 
 const char* Store::getName()    const { return storeName; }

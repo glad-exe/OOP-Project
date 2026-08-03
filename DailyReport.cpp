@@ -6,18 +6,16 @@
 #include "Inventory.h"
 #include "Order.h"
 
-using namespace std;
-
     //CONSTRUCTORS
 
     //Default constructor
     DailyReport::DailyReport(){
-        cout << "Daily Report created." << endl;
+        std::cout << "Daily Report created." << std::endl;
     }
 
     //DESTRUCTOR
     DailyReport::~DailyReport(){
-        cout << "Daily Report destroyed." << endl;
+        std::cout << "Daily Report destroyed." << std::endl;
     }
 
     //member functions
@@ -25,11 +23,11 @@ using namespace std;
     //goes through every order and checks if the items still match the inventory
     void DailyReport::generate(Inventory& inv, Order** orders, int orderCount){
 
-        cout << "Daily report: " << endl;
+        std::cout << "Daily report: " << std::endl;
 
         for(int i = 0; i < orderCount; i++){
 
-            cout << "Order number" << orders[i]->getOrderNumber() << " - " << orders[i]->getCustomerName() << endl;
+            std::cout << "Order number" << orders[i]->getOrderNumber() << " - " << orders[i]->getCustomerName() << std::endl;
 
             for(int j = 0; j < orders[i]->getItemCount(); j++){
 
@@ -45,9 +43,9 @@ using namespace std;
                 }
 
                 if(found == false){
-                    cout << "Mismatch : " << p->getProductName() << " ( " << qty << ") was ordered but not found." << endl;
+                    std::cout << "Mismatch : " << p->getProductName() << " ( " << qty << ") was ordered but not found." << std::endl;
                 }
             }
         }
-        cout << "End of report" << endl;
+        std::cout << "End of report" << std::endl;
     }

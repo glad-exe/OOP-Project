@@ -4,28 +4,27 @@
 #include <iostream>
 #include "Label.h"
 
-using namespace std;
 // CONSTRUCTORS
 
 // Default constructor
 // basic
 Label::Label() {
     labelText = copyString("Untitled Label");
-    cout << "Label " << labelText << " created" << endl;
+    std::cout << "Label " << labelText << " created" << std::endl;
 }
 
 // Parameterized constructor
 // only allocates memory for labelText and copies the provided text into it.
 Label::Label(const char* text) {
     labelText = copyString(text);
-    cout << "Label " << labelText << " created" << endl;
+    std::cout << "Label " << labelText << " created" << std::endl;
 }
 
 // Copy Constructor (Deep Copy)
 // Allocates new memory for labelText and copies the content from the other Label object.
 Label::Label(const Label& other) {
     labelText = copyString(other.labelText);
-    cout << "Label " << labelText << " (Copy) created" << endl;
+    std::cout << "Label " << labelText << " (Copy) created" << std::endl;
 }
 
 // ASSIGNMENT OPERATOR (Deep Copy & Self-Assignment Guard)
@@ -43,7 +42,7 @@ Label& Label::operator=(const Label& other) {
 // Frees the dynamically allocated memory for labelText
 // and prints a message indicating that the label has been destroyed.
 Label::~Label() {
-    cout << "Label " << (labelText ? labelText : "") << " destroyed" << endl;
+    std::cout << "Label " << (labelText ? labelText : "") << " destroyed" << std::endl;
     delete[] labelText;
 }
 
@@ -61,5 +60,5 @@ const char* Label::getText() const {
 // MEMBER FUNCTIONS
 
 void Label::printLabel() const {
-    cout << "*  " << labelText << endl;
+    std::cout << "*  " << labelText << std::endl;
 }
