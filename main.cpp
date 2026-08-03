@@ -141,7 +141,6 @@ void handleRemoveByBarcode(Inventory& inv) {
         cout << "Removing: " << endl;
         p->displayInfo();
         inv.removeByBarcode(bCode);
-        delete p;
     }
 }
 
