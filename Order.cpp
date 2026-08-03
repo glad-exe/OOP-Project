@@ -42,6 +42,7 @@ Order::~Order() {
     delete[] itemQuantities;
     cout << "Order " << orderNumber << "destroyed.";
 }
+int Order::getOrderNumber() const { return orderNumber; }
 
 void   Order::grow() {
     int newCapacity = itemCapacity * 2;

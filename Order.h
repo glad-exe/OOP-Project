@@ -22,6 +22,8 @@ class Order {
         Order(const Order& other);
         ~Order();
 
+        int getOrderNumber() const;
+
         void     addItem(Product* p, int quantity);
         Order    mergeWith(const Order& other);
         bool     complete(Inventory& inv);
