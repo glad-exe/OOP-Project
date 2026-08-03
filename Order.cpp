@@ -2,9 +2,10 @@
 // Student ID: 20251030 20250141 20250032 20230270
 
 #include "Order.h"
+#include "StringUtils.h"
 #include "Product.h"
 #include "Inventory.h"
-#include "StringUtils.h"
+
 #include <iostream>
 
 using namespace std;
@@ -41,6 +42,23 @@ Order::~Order() {
     delete[] itemProducts;
     delete[] itemQuantities;
     cout << "Order " << orderNumber << "destroyed.";
+}
+
+void   Order::grow() {
+    int newCapacity = itemCapacity * 2;
+    Product** newProducts = new Product*[newCapacity];
+    int* newQuantities = new int[newCapacity];
+
+    for (int i = 0; i < itemCount; i++) {
+        newProducts[i] = itemProducts[i];
+        newQuantities[i] = itemQuantities[i];
+    }
+
+    delete[] itemProducts;
+    delete[] itemQuantities;
+    itemProducts = newProducts;
+    itemQuantities = newQuantities;
+    itemCapacity = newCapacity;
 }
 
 void   Order::addItem(Product* p, int quantity) {
