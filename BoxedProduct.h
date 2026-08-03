@@ -15,13 +15,8 @@ class BoxedProduct : public Product, public Label {
 
         //Default parametrized constructor
         //SO UNREADABLE OH MY GOD
-        BoxedProduct::BoxedProduct(double pWeight, int bCode, const char* pName,
-        double pPrice, int pStock, const char* pDescription)
-        : Product(bCode, pName, pPrice, pStock, pDescription),
-        Label(pName), 
-        weight(pWeight), location() {
-            cout << "BoxedProduct " << pName << " created." << endl;
-        }
+        BoxedProduct(double pWeight = 0.0, int bCode = 0, const char* pName = "",
+        double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
         
         //Copy constructor
         BoxedProduct(const BoxedProduct& other);
