@@ -355,25 +355,33 @@ int main() {
 
     int choice = 0;
     while (choice != 16) {
-        cout << "\n--- Store Management System ---\n";
-        cout << "1. Add Product to Shelf\n";
-        cout << "2. Add Product to Warehouse\n";
-        cout << "3. Display Shelf Products\n";
-        cout << "4. Search Product by Barcode\n";
-        cout << "5. Search Product by Name\n";
-        cout << "6. Remove Product by Barcode\n";
-        cout << "7. Add Supplier\n";
-        cout << "8. Start New Order\n";
-        cout << "9. Add Item to Order\n";
-        cout << "10. Merge Orders\n";
-        cout << "11. Complete Order\n";
-        cout << "12. Print Sellable Stock Value\n";
-        cout << "13. Print Total Product Count\n";
-        cout << "14. Print Labels for a Product\n";
-        cout << "15. Print Daily Report\n";
-        cout << "16. Close Shop and Exit\n";
+        cout << "\n--- Store Management System ---" << endl;
+        cout << "1.  Add Product to Shelf" << endl;
+        cout << "2.  Add Product to Warehouse" << endl;
+        cout << "3.  Display Shelf Products" << endl;
+        cout << "4.  Search Product by Barcode" << endl;
+        cout << "5.  Search Product by Name" << endl;
+        cout << "6.  Remove Product by Barcode << endl";
+        cout << "7.  Add Supplier" << endl;
+        cout << "8.  Start New Order" << endl;
+        cout << "9.  Add Item to Order" << endl;
+        cout << "10. Merge Orders" << endl;
+        cout << "11. Complete Order" << endl;
+        cout << "12. Print Sellable Stock Value" << endl;
+        cout << "13. Print Total Product Count" << endl;
+        cout << "14. Print Labels for a Product" << endl;
+        cout << "15. Print Daily Report" << endl;
+        cout << "16. Close Shop and Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
+
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore(10000, '\n');
+            cout << "Invalid input. Please enter a number." << endl;
+            continue;
+        }
+    }
 
         switch (choice){
             case 1:  handleAddToShelf(store.getInventory());                           break;
@@ -393,10 +401,11 @@ int main() {
             case 15: handlePrintDailyReport(store.getInventory(), orders, orderCount); break;
             case 16: handleCloseShop(store);                                           break;
         }
-    }
+        
     for(int i = 0; i < orderCount; i++) {
         delete orders[i];
     }
     delete[] orders;
     return 0;
 }
+
