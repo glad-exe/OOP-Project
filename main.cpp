@@ -86,7 +86,11 @@ void handleDisplayShelf(Inventory& inv) {
     inv.listShelf();
 }
 
-void handleSearchByBarcode(Inventory& inv, int bCode) {
+void handleSearchByBarcode(Inventory& inv) {
+    int bCode;
+    cout << "Enter barcode to search: ";
+    cin >> bCode;
+
     Product* p = inv.findByBarcode(bCode);
     if (p == 0) {
         cout << "No product found with barcode " << bCode << "." << endl;
@@ -94,8 +98,19 @@ void handleSearchByBarcode(Inventory& inv, int bCode) {
     }
     p->displayInfo();
 }
-void handleSearchByName(Store& store) {
 
+void handleSearchByName(Inventory& inv) {
+    char* name;
+    cout << "Enter barcode to search: ";
+    cin.ignore();
+    cin.getline(name, 100);
+
+    Product* p = inv.findByName(name);
+    if (p == 0) {
+        cout << "No product found with barcode " << name << "." << endl;
+        return;
+    }
+    p->displayInfo();
 }
 
 void handleRemoveByBarcode(Store& store) {

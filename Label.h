@@ -3,8 +3,9 @@
 #include "Product.h"
 #ifndef LABEL_H
 #define LABEL_H
-class Product;
-class Inventory;
+
+#include "Product.h"
+#include "Inventory.h"
 
 class Label {
 private:
