@@ -3,6 +3,9 @@
 #ifndef ORDER_H
 #define ORDER_H
 
+#include "Product.h"
+#include "Inventory.h"
+
 class Order {
     private:
         const int orderNumber;     // Fingerprint for the order number.

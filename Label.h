@@ -3,6 +3,8 @@
 #include "Product.h"
 #ifndef LABEL_H
 #define LABEL_H
+class Product;
+class Inventory;
 
 class Label {
 private:
