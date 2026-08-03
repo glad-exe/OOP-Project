@@ -14,6 +14,19 @@
 
 using namespace std;
 
+void growOrders(Order**& orders, int& orderCapacity) {
+    int newCapacity = orderCapacity * 2;
+    Order** newOrders = new Order*[newCapacity];
+
+    for (int i = 0; i < orderCapacity; i++) {
+        newOrders[i] = orders[i];
+    }
+
+    delete[] orders;
+    orders = newOrders;
+    orderCapacity = newCapacity;
+}
+
 Product* promptForNewProduct() {
     int type;
     cout << "Product type - 1: Boxed  2: Perishable  3: Digital: ";
@@ -131,30 +144,31 @@ void handleRemoveByBarcode(Inventory& inv) {
 }
 
 void handleAddSupplier(Store& store) {
-
+    
 }
+
 void handleStartOrder(Order orders[], int& orderCount, int maxOrders) {
 
 }
 
 void handleAddItemToOrder(Order orders[], int orderCount, Inventory& inv) {
-
+    
 }
 
 void handleMergeOrders(Order orders[], int orderCount) {
-
+    
 }
 
 void handleCompleteOrder(Order orders[], int orderCount, Inventory& inv) {
-
+    
 }
 
 void handlePrintSellableStock(Store& store) {
-
+    
 }
 
 void handlePrintProductCount() {
-
+    
 }
 
 void handlePrintLabels(Store& store) {
@@ -162,6 +176,8 @@ void handlePrintLabels(Store& store) {
 }
 
 void handlePrintDailyReport(Inventory& inv, Order orders[], int orderCount) {
+    DailyReport r;
+    r.generate(inv, orders, orderCount);
 
 }
 
@@ -171,4 +187,12 @@ bool handleCloseShop(Store& store) {
     return false; 
 }
 
-
+int main() {
+    Order** orders = new Order*[4];
+    int orderCount = 0;
+    
+    for(int i = 0; i < orderCount; i++) {
+        delete orders[i];
+    }
+    
+}
