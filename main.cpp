@@ -144,8 +144,29 @@ void handleRemoveByBarcode(Inventory& inv) {
     }
 }
 
+<<<<<<< HEAD
+void handleAddSupplier(Store& store) {
+    char name[100];
+    char number[30];
+    char address[200];
+    
+    store.getSupplier().setSupplierName(name);
+    store.getSupplier().setSupplierPhone(number);
+    store.getSupplier().setSupplierAddress(address);
+
+    int count;
+    cout << "How many products does this supplier deliver? ";
+    cin >> count;
+    for (int i = 0; i < count; i++) {
+        int barcode;
+        cout << "Barcode " << (i+1) << ": ";
+        cin >> barcode;
+        store.getSupplier().addSuppliedProduct(barcode);
+    }
+=======
 void handleAddSupplier(Supplier& supplier) {
 
+>>>>>>> d87770312b11391a03d66425070aff464ce4ba54
 }
 
 void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {

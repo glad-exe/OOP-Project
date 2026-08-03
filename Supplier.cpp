@@ -88,7 +88,7 @@ using namespace std;
         delete[] supplierCodes;
         supplierCodes = temp;
     }
-    // displys the info
+    // displays the info
     void Supplier::displayInfo() const {
         cout << "Name   : " << supplierName << endl;
         cout << "Phone  : " << supplierPhone << endl;
