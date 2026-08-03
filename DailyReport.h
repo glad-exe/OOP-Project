@@ -2,8 +2,8 @@
 // Student ID: 20251030 20250141 20250032 20230270
 #ifndef DAILY_H
 #define DAILY_H
-class Order;
-
+#include "Order.h"
+#include "Inventory.h"
 class DailyReport{
     public:
         // THERE IS NO WAAAAAAY THIS IS DONE WHAAAAAAAAAAAAAT
