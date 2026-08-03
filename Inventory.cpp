@@ -33,11 +33,11 @@ using namespace std;
     //member funcions
 
     //adds a product to shelf, or warehouse if toShelf is false
-    void Inventory::addProduct(Product* product, bool toShelf){
+    bool Inventory::addProduct(Product* product, bool toShelf){
         if(toShelf){
             if(shelfCount >= 50){
                 cout << "shelf is full, cant add no more." << endl;
-                return;
+                return false;
             }
             shelf[shelfCount] = product;
             shelfCount++;
@@ -45,18 +45,18 @@ using namespace std;
         else{
             if(warehouseCount >= warehouseSize){
                 cout << "warehouse full, cant add no more." << endl;
-                return;
+                return false;
             }
             warehouse[warehouseCount] = product;
             warehouseCount++;
         }
+        return true;
     }
 
     //removes product by its barcode
-    //needs to be fixed, because it doesnt delete the product from memory, just from the array
     void Inventory::removeByBarcode(int barcode){
         for(int i = 0; i < shelfCount; i++){
-            if(shelf[i]->getBarcode() == barcode){
+            if(shelf[i]!= 0 && shelf[i]->getBarcode() == barcode){
                 delete shelf[i];
                 for(int j = i; j < shelfCount - 1; j++) shelf[j] = shelf[j + 1];
                 shelfCount--;
@@ -66,7 +66,7 @@ using namespace std;
         }
 
         for(int i = 0; i < warehouseCount; i++){
-            if(warehouse[i]->getBarcode() == barcode){
+            if(warehouse[i] != 0 && warehouse[i]->getBarcode() == barcode){
                 delete warehouse[i];
                 for(int j = i; j < warehouseCount - 1; j++) warehouse[j] = warehouse[j + 1];
                 warehouseCount--;
@@ -81,21 +81,22 @@ using namespace std;
     //finds product by barcode
     Product* Inventory::findByBarcode(int barcode) const{
         for(int i = 0; i < shelfCount; i++){
-            if(shelf[i]->getBarcode() == barcode) return shelf[i];
+            if(shelf[i] != 0 && shelf[i]->getBarcode() == barcode) return shelf[i];
         }
         for(int i = 0; i < warehouseCount; i++){
-            if(warehouse[i]->getBarcode() == barcode) return warehouse[i];
+            if(warehouse[i] != 0 && warehouse[i]->getBarcode() == barcode) return warehouse[i];
         }
         return 0;
     }
 
     //finds product by its name
     Product* Inventory::findByName(const char* name) const{
+        if(name == 0) return 0;
         for(int i = 0; i < shelfCount; i++){
-            if(sameText(shelf[i]->getProductName(), name)) return shelf[i];
+            if(shelf[i] != 0 && sameText(shelf[i]->getProductName(), name)) return shelf[i];
         }
         for(int i = 0; i < warehouseCount; i++){
-            if(sameText(warehouse[i]->getProductName(), name)) return warehouse[i];
+            if(warehouse[i] != 0 && sameText(warehouse[i]->getProductName(), name)) return warehouse[i];
         }
         return 0;
     }
@@ -103,7 +104,7 @@ using namespace std;
     //prints everything thats on the shelf rn
     void Inventory::listShelf() const{
         for(int i = 0; i < shelfCount; i++){
-            shelf[i]->displayInfo();
+            if(shelf[i] != 0) shelf[i]->displayInfo();
         }
     }
 
@@ -112,12 +113,14 @@ using namespace std;
         double total = 0.0;
 
         for(int i = 0; i < shelfCount; i++){
+            if(shelf[i] == 0) continue;
             PerishableProduct* per = dynamic_cast<PerishableProduct*>(shelf[i]);
             if(per != 0 && per->hasExpired()) continue;
             total += shelf[i]->totalStockValue();
         }
 
         for(int i = 0; i < warehouseCount; i++){
+            if(warehouse[i] == 0) continue;
             PerishableProduct* per = dynamic_cast<PerishableProduct*>(warehouse[i]);
             if(per != 0 && per->hasExpired()) continue;
             total += warehouse[i]->totalStockValue();

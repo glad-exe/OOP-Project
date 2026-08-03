@@ -13,6 +13,8 @@ class Inventory{
         int       warehouseSize;  // max size of warehouse
         int       warehouseCount; // how many are used
 
+        Inventory           (const Inventory& og) = delete; // Prevent copying of Inventory objects
+        Inventory& operator=(const Inventory& og) = delete; // Prevent assignment of Inventory objects
     public:
         //CONSTRUCTOR
         Inventory(int size);
@@ -21,7 +23,7 @@ class Inventory{
         ~Inventory();
 
         //member funcions
-        void      addProduct(Product* product, bool toShelf = true);
+        bool      addProduct(Product* product, bool toShelf = true);
         void      removeByBarcode(int barcode);
         Product*  findByBarcode(int barcode) const;
         Product*  findByName(const char* name) const;
