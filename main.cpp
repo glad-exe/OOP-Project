@@ -121,6 +121,7 @@ void handleSearchByName(Inventory& inv) {
     Product* p = inv.findByName(name);
     if (p == 0) {
         cout << "No product found with name " << name << "." << endl;
+        delete[] name;
         return;
     }
     p->displayInfo();
