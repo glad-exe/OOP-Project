@@ -159,16 +159,43 @@ void handleMergeOrders(Order orders[], int orderCount) {
     
 }
 
-void handleCompleteOrder(Order orders[], int orderCount, Inventory& inv) {
-    // 1 find order
-    // 2 complete
-    // 3 delete
+void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
+    int num;
+    cout << "Enter order number to complete: ";
+    cin >> num;
 
-    
+    int index = -1;
+    for (int i = 0; i < orderCount; i++) {
+        if (orders[i]->getOrderNumber() == num) {
+            index = i;
+            break;
+        }
+    }
+
+    if (index == -1) {
+        cout << "No order found with number " << num << "." << endl;
+        return;
+    }
+
+    bool success = orders[index]->complete(inv);
+
+    if (!success) {
+        cout << "Order could not be completed - insufficient stock." << endl;
+        return;
+    }
+
+    cout << "Order completed successfully." << endl;
+
+    delete orders[index];
+    for (int j = index; j < orderCount - 1; j++) {
+        orders[j] = orders[j + 1];
+    }
+    orderCount--;
+    orders[orderCount] = 0;
 }
 
-void handlePrintSellableStock(Store& store) {
-    
+void handlePrintSellableStock(Inventory& inv) {
+    cout << "Total sellable stock value: " << inv.sellableStockValue() << endl;
 }
 
 void handlePrintProductCount() {
