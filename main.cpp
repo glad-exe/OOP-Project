@@ -332,10 +332,9 @@ void handlePrintLabels(Inventory& inv) {
     boxLabel.printLabel();
 }
 
-void handlePrintDailyReport(Inventory& inv, Order orders[], int orderCount) {
+void handlePrintDailyReport(Inventory& inv, Order** orders, int orderCount) {
     DailyReport r;
     r.generate(inv, orders, orderCount);
-
 }
 
 bool handleCloseShop(Store& store) {
@@ -345,12 +344,16 @@ bool handleCloseShop(Store& store) {
 }
 
 int main() {
-    Order** orders = new Order*[4];
+    int orderCapacity = 4;
+    Order** orders = new Order*[orderCapacity];
     int orderCount = 0;
     
-    for(int i = 0; i < orderCount; i++) {
-        delete orders[i];
-    }
+    int whSize;
+    cout << "Enter warehouse size: ";
+    cin >> whSize;
+    Store store("MiniMart", "Amman, Jordan", whSize);
+    store.openStore();
+
     int choice = 0;
     while (choice != 16) {
         cout << "\n--- Store Management System ---\n";
@@ -386,12 +389,15 @@ int main() {
             case 10: handleMergeOrders(orders, orderCount, orderCapacity);             break;
             case 11: handleCompleteOrder(orders, orderCount, store.getInventory());    break;
             case 12: handlePrintSellableStock(store.getInventory());                   break;
-            case 13: handlePrintProductCount();                                        break;
+            case 13: handlePrintProductCount(); break;
             case 14: handlePrintLabels(store.getInventory());                          break;
             case 15: handlePrintDailyReport(store.getInventory(), orders, orderCount); break;
-
-
-
+            case 16: handleCloseShop(store);                                           break;
         }
     }
+    for(int i = 0; i < orderCount; i++) {
+        delete orders[i];
+    }
+    delete[] orders;
+    return 0;
 }
