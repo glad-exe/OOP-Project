@@ -353,25 +353,26 @@ int main() {
     Store store("MiniMart", "Amman, Jordan", whSize);
     store.openStore();
 
-    int choice = 0;
+    int choice = 0; 
     while (choice != 16) {
         cout << "\n--- Store Management System ---" << endl;
-        cout << "1.  Add Product to Shelf" << endl;
-        cout << "2.  Add Product to Warehouse" << endl;
-        cout << "3.  Display Shelf Products" << endl;
-        cout << "4.  Search Product by Barcode" << endl;
-        cout << "5.  Search Product by Name" << endl;
-        cout << "6.  Remove Product by Barcode << endl";
-        cout << "7.  Add Supplier" << endl;
-        cout << "8.  Start New Order" << endl;
-        cout << "9.  Add Item to Order" << endl;
-        cout << "10. Merge Orders" << endl;
-        cout << "11. Complete Order" << endl;
-        cout << "12. Print Sellable Stock Value" << endl;
-        cout << "13. Print Total Product Count" << endl;
-        cout << "14. Print Labels for a Product" << endl;
-        cout << "15. Print Daily Report" << endl;
-        cout << "16. Close Shop and Exit" << endl;
+        cout << "| 1| Add Product to Shelf        |" << endl;
+        cout << "| 2| Add Product to Warehouse    |" << endl;
+        cout << "| 3| Display Shelf Products      |" << endl;
+        cout << "| 4| Search Product by Barcode   |" << endl;
+        cout << "| 5| Search Product by Name      |" << endl;
+        cout << "| 6| Remove Product by Barcode   |" << endl;
+        cout << "| 7| Add Supplier                |" << endl;
+        cout << "| 8| Start New Order             |" << endl;
+        cout << "| 9| Add Item to Order           |" << endl;
+        cout << "|10| Merge Orders                |" << endl;
+        cout << "|11| Complete Order              |" << endl;
+        cout << "|12| Print Sellable Stock Value  |" << endl;
+        cout << "|13| Print Total Product Count   |" << endl;
+        cout << "|14| Print Labels for a Product  |" << endl;
+        cout << "|15| Print Daily Report          |" << endl;
+        cout << "|16| Close Shop and Exit         |" << endl;
+        cout << "-------------------------------------------" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -381,8 +382,7 @@ int main() {
             cout << "Invalid input. Please enter a number." << endl;
             continue;
         }
-    }
-
+        
         switch (choice){
             case 1:  handleAddToShelf(store.getInventory());                           break;
             case 2:  handleAddToWarehouse(store.getInventory());                       break;
@@ -402,6 +402,7 @@ int main() {
             case 16: handleCloseShop(store);                                           break;
         }
         
+    }
     for(int i = 0; i < orderCount; i++) {
         delete orders[i];
     }
