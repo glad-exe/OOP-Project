@@ -15,6 +15,6 @@ class DailyReport{
         ~DailyReport();
 
         //member functions
-        void generate(Inventory& inv, Order orders[], int orderCount);
+        void generate(Inventory& inv, Order** orders, int orderCount);
 };
 #endif

@@ -23,18 +23,18 @@ using namespace std;
     //member functions
 
     //goes through every order and checks if the items still match the inventory
-    void DailyReport::generate(Inventory& inv, Order orders[], int orderCount){
+    void DailyReport::generate(Inventory& inv, Order** orders, int orderCount){
 
         cout << "Daily report: " << endl;
 
         for(int i = 0; i < orderCount; i++){
 
-            cout << "Order number" << orders[i].orderNumber << " - " << orders[i].customerName << endl;
+            cout << "Order number" << orders[i]->getOrderNumber() << " - " << orders[i]->getCustomerName() << endl;
 
-            for(int j = 0; j < orders[i].itemCount; j++){
+            for(int j = 0; j < orders[i]->getItemCount(); j++){
 
-                Product* p = orders[i].itemProducts[j];
-                int qty = orders[i].itemQuantities[j];
+                Product* p = orders[i]->getItemProducts()[j];
+                int qty = orders[i]->getItemQuantities()[j];
                 bool found = false;
 
                 for(int s = 0; s < inv.shelfCount; s++){
