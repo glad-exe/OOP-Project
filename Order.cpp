@@ -22,7 +22,6 @@ Order::Order(int num, const char* name, Product* cart) : orderNumber(num), custo
 // i thought this would be bad, cause its not a deep copy, but this is exactly how it should work.
 // think about it! if a site owner changes a product, it should change for everyones carts.
 Order::Order(const Order& other) : orderNumber(other.orderNumber) {
-    
     customerName = copyString(other.customerName);
     itemCapacity = other.itemCapacity;
     itemCount = other.itemCount;
@@ -68,12 +67,39 @@ void   Order::addItem(Product* p, int quantity) {
     itemCount++;
 }
 
-Order  Order::mergeWith(const Order& other) {
+Order   Order::mergeWith(const Order& other) {
+    if (!sameText(customerName, other.customerName)) {
+        cout << "Can not merge two orders from different customers." << endl;
+        return *this;
+    }
 
+    Order merged(this->orderNumber, customerName, nullptr);
+
+    for (int i = 0; i < itemCount; i++) {
+        merged.addItem(itemProducts[i], itemQuantities[i]);
+    }
+    for (int i = 0; i < other.itemCount; i++) {
+        merged.addItem(other.itemProducts[i], other.itemQuantities[i]);
+    }
+
+    return merged;
 }
 
 bool   Order::complete(Inventory& inv) {
-    
+    // first pass checks if everything is available
+    for (int i = 0; i < itemCount; i++) {
+        Product* p = inv.findByBarcode(itemProducts[i]->getBarcode());
+        if (p == 0 || p->getStock() < itemQuantities[i]) {
+            return false;
+        }
+    }
+    // second pass completes the order
+    for (int i = 0; i < itemCount; i++) {
+        Product* p = inv.findByBarcode(itemProducts[i]->getBarcode());
+        p->setStock(p->getStock() - itemQuantities[i]);
+    }
+
+    return true;
 }
 
 double Order::total() {
