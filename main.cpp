@@ -31,6 +31,11 @@ Product* promptForNewProduct() {
     int type;
     cout << "Product type - 1: Boxed  2: Perishable  3: Digital: ";
     cin >> type;
+    if (cin.fail()) {
+        cin.clear();
+        cin.ignore(10000, '\n');
+        cout << "Invalid input. Please enter a number." << endl;
+    }
 
     int barcode;
     string name, description;
