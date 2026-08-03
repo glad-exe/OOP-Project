@@ -54,9 +54,19 @@ Product* promptForNewProduct() {
 
     if (type == 1) {
         double weight;
+        char aisle;
+        int slot;
         cout << "Weight (kg): ";
         cin >> weight;
-        return new BoxedProduct(weight, barcode, name.c_str(), price, stock, description.c_str());
+        cout << "Aisle (Letter): ";
+        cin >> aisle;
+        cout << "Slot (Number): ";
+        cin >> slot;
+
+        BoxedProduct* newBox = new BoxedProduct(weight, barcode, name.c_str(), price, stock, description.c_str());
+        newBox->setLocation(aisle, slot);
+
+        return newBox;
     }
     else if (type == 2) {
         double temp; int daysLeft;
@@ -84,8 +94,12 @@ Product* promptForNewProduct() {
 void handleAddToShelf(Inventory& inv) {
     Product* p = promptForNewProduct();
     if (p == 0) return;
-    inv.addProduct(p, true);
-    cout << "Product added to shelf." << endl;
+    if(inv.addProduct(p, true)) {
+        cout << "Product added to shelf." << endl;
+    } else {
+        cout << "Failed to add product. Shelf is too full!" << endl;
+        delete p;
+    }
 }
 
 void handleAddToWarehouse(Inventory& inv) {
