@@ -65,7 +65,7 @@ using namespace std;
     }
     Supplier& Supplier::setSupplierCodes   (int* codes) {
         delete[] supplierCodes;
-        supplierCodes = codes;
+        supplierCodes = copyIntArr(codes);
         return *this;
     }
 
@@ -86,7 +86,8 @@ using namespace std;
         temp[len + 1] = -1;
 
         delete[] supplierCodes;
-        supplierCodes = temp;
+        supplierCodes = copyIntArr(temp);
+        delete[] temp;
     }
     // displays the info
     void Supplier::displayInfo() const {
