@@ -160,6 +160,10 @@ void handleMergeOrders(Order orders[], int orderCount) {
 }
 
 void handleCompleteOrder(Order orders[], int orderCount, Inventory& inv) {
+    // 1 find order
+    // 2 complete
+    // 3 delete
+
     
 }
 
@@ -168,11 +172,28 @@ void handlePrintSellableStock(Store& store) {
 }
 
 void handlePrintProductCount() {
-    
+    cout << "Total products currently in system: " << Product::getProductCount() << endl;
 }
 
-void handlePrintLabels(Store& store) {
+void handlePrintLabels(Inventory& inv) {
+    int bCode;
+    cout << "Enter barcode to print labels for: ";
+    cin >> bCode;
 
+    Product* p = inv.findByBarcode(bCode);
+    if (p == 0) {
+        cout << "No product found." << endl;
+        return;
+    }
+
+    Label productLabel(p->getProductName());
+    productLabel.printLabel();
+
+    Label shelfLabel("Shelf Location");
+    shelfLabel.printLabel();
+
+    Label boxLabel("Delivery Box");
+    boxLabel.printLabel();
 }
 
 void handlePrintDailyReport(Inventory& inv, Order orders[], int orderCount) {
