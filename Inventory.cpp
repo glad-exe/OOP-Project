@@ -7,9 +7,6 @@
 #include "StringUtils.h"
 using namespace std;
 
-    //checks if 2 strings are the smae
-    
-
     //CONSTRUCTOR
     Inventory::Inventory(int size){
         warehouseSize = size;
