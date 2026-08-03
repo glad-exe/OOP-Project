@@ -143,20 +143,21 @@ void handleRemoveByBarcode(Inventory& inv) {
     }
 }
 
-void handleAddSupplier(Store& store) {
+void handleAddSupplier(Supplier& supplier) {
     
 }
 
-void handleStartOrder(Order orders[], int& orderCount, int maxOrders) {
+void handleStartOrder(Order**& orders, int& orderCount, int& orderCapacity) {
 
 }
 
-void handleAddItemToOrder(Order orders[], int orderCount, Inventory& inv) {
-    
+void handleAddItemToOrder(Order** orders, int orderCount, Inventory& inv) {
+
 }
 
-void handleMergeOrders(Order orders[], int orderCount) {
-    
+void handleMergeOrders(Order**& orders, int& orderCount, int& orderCapacity) {
+
+
 }
 
 void handleCompleteOrder(Order** orders, int& orderCount, Inventory& inv) {
