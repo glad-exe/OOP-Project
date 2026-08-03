@@ -10,7 +10,7 @@
 
 using namespace std;
 
-Order::Order(int num, const char* name, Product* cart) : orderNumber(num), customerName(copyString(name)) {
+Order::Order(int num, const char* name) : orderNumber(num), customerName(copyString(name)) {
     itemCapacity = 4;
     itemCount = 0;
     itemProducts = new Product*[itemCapacity];
@@ -74,7 +74,7 @@ Order   Order::mergeWith(const Order& other) {
         return *this;
     }
 
-    Order merged(this->orderNumber, customerName, nullptr);
+    Order merged(this->orderNumber, customerName);
 
     for (int i = 0; i < itemCount; i++) {
         merged.addItem(itemProducts[i], itemQuantities[i]);

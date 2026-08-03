@@ -25,7 +25,7 @@ class Order {
 
         //CONSTRUCTORS
         //default parametrized
-        Order(int num = 0, const char* name = "", Product* _items = nullptr);
+        Order(int num = 0, const char* name = "");
 
         //copy
         Order(const Order& other);
