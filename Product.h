@@ -43,9 +43,11 @@ class Product{
         //member functions
 
         void           addStock(int tempStock = 1);
+        
         bool           isSameItem(const Product& other) const;
         double         totalStockValue()                const;
         virtual void   displayInfo()                    const;
-        int            getProductCount()                const;
+
+        static int     getProductCount();
 };
 #endif
