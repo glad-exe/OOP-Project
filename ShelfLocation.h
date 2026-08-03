@@ -12,5 +12,9 @@ class ShelfLocation {
         char getAisle();
         int  getSlot();
         void displayLocation() const;
+
+        //finally.
+        void setAisle(char a);
+        void setSlot(int s);
 };
 #endif

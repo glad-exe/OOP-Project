@@ -50,3 +50,10 @@
         cout << "Delivery Charge: $" << deliveryCharge() << endl;
         location.displayLocation();
     }
+
+    //i dont even know why i made this change so late this shouldve been made sooooooooo long ago.
+    // finally gives aisle and slot real values.
+    void BoxedProduct::setLocation(char a, int s) {
+        location.setAisle(a);
+        location.setSlot(s);
+    }

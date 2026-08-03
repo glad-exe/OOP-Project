@@ -25,8 +25,9 @@ class BoxedProduct : public Product, public Label {
         ~BoxedProduct();
 
         //member functions
-        double deliveryCharge() const;
-        void   displayInfo() const;
+        void    setLocation(char a, int s);
+        double  deliveryCharge() const;
+        void    displayInfo() const;
 
 };
  
