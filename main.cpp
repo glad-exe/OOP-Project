@@ -128,7 +128,7 @@ void handleSearchByName(Inventory& inv) {
     delete[] name;
 }
 
-void handleRemoveByBarcode(Inventory& inv) {
+void handleRemoveByBarcode(Inventory& inv, Order** orders, int orderCount) {
     int bCode;
     cout << "Enter barcode to search: ";
     cin >> bCode;
@@ -137,11 +137,21 @@ void handleRemoveByBarcode(Inventory& inv) {
     if (p == 0) {
         cout << "No product found with barcode " << bCode << "." << endl;
         return;
-    } else {
-        cout << "Removing: " << endl;
-        p->displayInfo();
-        inv.removeByBarcode(bCode);
+
+    } 
+    for (int i = 0; i < orderCount; i++) {
+        for (int j = 0; j < orders[i]->getItemCount(); j++) {
+            if (orders[i]->getItemProducts()[j]->getBarcode() == bCode) {
+                cout << "Cannot remove product! It is currently in active Order #" 
+                     << orders[i]->getOrderNumber() << "." << endl;
+                return; 
+            }
+        }
     }
+
+    cout << "Removing: " << endl;
+    p->displayInfo();
+    inv.removeByBarcode(bCode);
 }
 
 void handleAddSupplier(Store& store) {
@@ -345,6 +355,9 @@ bool handleCloseShop(Store& store) {
 int main() {
     int orderCapacity = 4;
     Order** orders = new Order*[orderCapacity];
+    for (int i = 0; i < orderCapacity; i++) {
+        orders[i] = 0; 
+    }
     int orderCount = 0;
     
     int whSize;
@@ -389,7 +402,7 @@ int main() {
             case 3:  handleDisplayShelf(store.getInventory());                         break;
             case 4:  handleSearchByBarcode(store.getInventory());                      break;
             case 5:  handleSearchByName(store.getInventory());                         break;
-            case 6:  handleRemoveByBarcode(store.getInventory());                      break;
+            case 6:  handleRemoveByBarcode(store.getInventory(), orders, orderCount);  break;
             case 7:  handleAddSupplier(store);                                         break;
             case 8:  handleStartOrder(orders, orderCount, orderCapacity);              break;
             case 9:  handleAddItemToOrder(orders, orderCount, store.getInventory());   break;

@@ -17,7 +17,8 @@ class Product{
         static int productCount; // Static member variable to keep track of the total number of Product instances created. It is shared among all instances of the Product class.
         
         public:
-        
+        //ASSIGNMENT OP DELETION HOWWWWWWWW
+        Product& operator=(const Product& og) = delete;
         //CONSTRUCTORS
         //Default constructor
         Product(int bCode = 0, const char* pName = "", double pPrice = 0.0, int pStock = 0, const char* pDescription = "");

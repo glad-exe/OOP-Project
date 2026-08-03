@@ -18,24 +18,37 @@ class Order {
         void      grow();           // doubles capacity when full
 
     public:
+
+        //ASSIGNMENT OP DELETION
+        Order& operator=(const Order& other) = delete;
+
+
+        //CONSTRUCTORS
+        //default parametrized
         Order(int num = 0, const char* name = "", Product* _items = nullptr);
+
+        //copy
         Order(const Order& other);
+
+        //destructor
         ~Order();
 
-        int getOrderNumber() const;
-
-        void     addItem(Product* p, int quantity);
-        Order    mergeWith(const Order& other);
-        bool     complete(Inventory& inv);
-        
-        double   total();
-        void     displayOrder();
-
-        friend class DailyReport;
+        //getters
+        int       getOrderNumber() const;
         Product** getItemProducts()    const;
         char*     getCustomerName()    const;
         int*      getItemQuantities()  const;
         int       getItemCount()       const;
+
+        //member funcs
+        void      addItem(Product* p, int quantity);
+        Order     mergeWith(const Order& other);
+        bool      complete(Inventory& inv);
+        double    total();
+        void      displayOrder();
+        
+
+        friend class DailyReport;
 
 };
 
