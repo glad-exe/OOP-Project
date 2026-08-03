@@ -119,3 +119,12 @@ void   Order::displayOrder() {
     }
     cout << "Total: " << total() << endl;
 }
+Product** Order::getItemProducts() const {
+    return itemProducts;
+}
+int* Order::getItemQuantities() const {
+    return itemQuantities;
+}
+char* Order::getCustomerName() const {
+    return customerName;
+}

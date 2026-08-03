@@ -32,6 +32,10 @@ class Order {
         void     displayOrder();
 
         friend class DailyReport;
+        Product** getItemProducts()    const;
+        char*     getCustomerName()    const;
+        int*      getItemQuantities()  const;
+        int       getItemCount()       const;
 
 };
 
