@@ -85,8 +85,7 @@ using namespace std;
         temp[len + 1] = -1;
 
         delete[] supplierCodes;
-        supplierCodes = copyIntArr(temp);
-        delete[] temp;
+        supplierCodes = temp;
     }
     // displays the info
     void Supplier::displayInfo() const {
