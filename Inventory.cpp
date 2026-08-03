@@ -4,17 +4,11 @@
 #include<iostream>
 #include "Inventory.h"
 #include "PerishableProduct.h"
+#include "StringUtils.h"
 using namespace std;
 
     //checks if 2 strings are the smae
-    bool Inventory::sameText(const char* a, const char* b) const{
-        int i = 0;
-        while(a[i] != '\0' && b[i] != '\0'){
-            if(a[i] != b[i]) return false;
-            i++;
-        }
-        return a[i] == '\0' && b[i] == '\0';
-    }
+    
 
     //CONSTRUCTOR
     Inventory::Inventory(int size){

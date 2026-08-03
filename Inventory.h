@@ -13,8 +13,6 @@ class Inventory{
         int       warehouseSize;  // max size of warehouse
         int       warehouseCount; // how many are used
 
-        bool sameText(const char* a, const char* b) const; //checks if 2 strings are equal
-
     public:
         //CONSTRUCTOR
         Inventory(int size);
