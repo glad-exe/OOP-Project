@@ -342,6 +342,47 @@ int main() {
     for(int i = 0; i < orderCount; i++) {
         delete orders[i];
     }
-    delete[] orders;
-    
+    int choice = 0;
+    while (choice != 16) {
+        cout << "\n--- Store Management System ---\n";
+        cout << "1. Add Product to Shelf\n";
+        cout << "2. Add Product to Warehouse\n";
+        cout << "3. Display Shelf Products\n";
+        cout << "4. Search Product by Barcode\n";
+        cout << "5. Search Product by Name\n";
+        cout << "6. Remove Product by Barcode\n";
+        cout << "7. Add Supplier\n";
+        cout << "8. Start New Order\n";
+        cout << "9. Add Item to Order\n";
+        cout << "10. Merge Orders\n";
+        cout << "11. Complete Order\n";
+        cout << "12. Print Sellable Stock Value\n";
+        cout << "13. Print Total Product Count\n";
+        cout << "14. Print Labels for a Product\n";
+        cout << "15. Print Daily Report\n";
+        cout << "16. Close Shop and Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice){
+            case 1:  handleAddToShelf(store.getInventory());                           break;
+            case 2:  handleAddToWarehouse(store.getInventory());                       break;
+            case 3:  handleDisplayShelf(store.getInventory());                         break;
+            case 4:  handleSearchByBarcode(store.getInventory());                      break;
+            case 5:  handleSearchByName(store.getInventory());                         break;
+            case 6:  handleRemoveByBarcode(store.getInventory());                      break;
+            case 7:  handleAddSupplier(store);                                         break;
+            case 8:  handleStartOrder(orders, orderCount, orderCapacity);              break;
+            case 9:  handleAddItemToOrder(orders, orderCount, store.getInventory());   break;
+            case 10: handleMergeOrders(orders, orderCount, orderCapacity);             break;
+            case 11: handleCompleteOrder(orders, orderCount, store.getInventory());    break;
+            case 12: handlePrintSellableStock(store.getInventory());                   break;
+            case 13: handlePrintProductCount();                                        break;
+            case 14: handlePrintLabels(store.getInventory());                          break;
+            case 15: handlePrintDailyReport(store.getInventory(), orders, orderCount); break;
+
+
+
+        }
+    }
 }
