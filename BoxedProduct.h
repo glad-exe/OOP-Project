@@ -16,7 +16,8 @@ class BoxedProduct : public Product, public Label {
         //Default parametrized constructor
         //SO UNREADABLE OH MY GOD
         BoxedProduct(double pWeight = 0.0, int bCode = 0, const char* pName = "",
-        double pPrice = 0.0, int pStock = 0, const char* pDescription = "");
+         double pPrice = 0.0, int pStock = 0, const char* pDescription = "",
+         const char* pLabelText = "Untitled Label");
         
         //Copy constructor
         BoxedProduct(const BoxedProduct& other);

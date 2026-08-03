@@ -10,15 +10,18 @@
     // Initializes weight to 0.0 and calls the base Product constructor with default values.
     // also initializes the ShelfLocation object using its default constructor.
     BoxedProduct::BoxedProduct(double pWeight, int bCode, const char* pName, 
-    double pPrice, int pStock, const char* pDescription)
-        :Product(bCode, pName, pPrice, pStock, pDescription), weight(pWeight), location() {
-        cout << "BoxedProduct " << pName << " created." << endl;
+    double pPrice, int pStock, const char* pDescription, const char* pLabelText)
+    : Product(bCode, pName, pPrice, pStock, pDescription), 
+      Label(pLabelText), 
+      weight(pWeight), location() {
+    cout << "BoxedProduct " << pName << " created." << endl;
     }
 
     //Copy constructor
     // Uses the base Product copy constructor to copy the base class members
     // and also copies the weight and location from the other BoxedProduct object.
-    BoxedProduct::BoxedProduct(const BoxedProduct& other) : Product(other), weight(other.weight), location(other.location) {
+    BoxedProduct::BoxedProduct(const BoxedProduct& other) 
+    : Product(other), Label(other), weight(other.weight), location(other.location) {
         cout << "BoxedProduct " << other.productName << " copied." << endl;
     }
 
