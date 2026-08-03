@@ -18,6 +18,9 @@ class Store {
         Store(const char* sName = "", const char* sAddress = "", int warehouseSize = 0);
         ~Store();
 
+        Store(const Store& other) = delete;
+        Store& operator=(const Store& other) = delete;
+
         void openStore();
         void closeStore();
 
