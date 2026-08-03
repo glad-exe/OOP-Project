@@ -6,14 +6,6 @@
 #include "StringUtils.h"
 using namespace std;
 
-    //Same old helper function as in Product class. Just copied here to avoid any issues with inheritance and access specifiers.
-    //see also: store.cpp, supplier.cpp, label.cpp, digitalproduct.cpp
-    // This function takes a C-style string (const char*) as input and creates a new dynamically allocated copy of that string.
-    // It first checks if the input string is null, and if so, it treats it as an empty string. 
-    // It then calculates the length of the input string, allocates memory for a new string of the same length plus one for the null terminator,
-    // and copies each character from the original string to the new string.
-    
-
     //Default parametrized constructor
     // Initializes downloadSize to 0.0 and licenceKey to an empty string.
     // Calls the base Product constructor with default values.
