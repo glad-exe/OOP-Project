@@ -81,7 +81,7 @@ using namespace std;
     double      Product::getPrice()        const { return price; }
     int         Product::getStock()        const { return inStock; }
     const char* Product::getDescription()  const { return description; }
-    int         Product::getProductCount() const { return productCount; }
+    int         Product::getProductCount()       { return productCount; }
 
     //MEMBER FUNCTIONS
 
